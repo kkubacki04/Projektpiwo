@@ -1,25 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from './supabaseClient';
 import LoginModal from './components/loginModal';
+import RegisterModal from './components/RegisterModal';
 import './index.css';
+
+function AuthLogger({ onAuthChange }) {
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.auth.getSession();
+      console.log('AuthLogger initial session:', data?.session ?? null);
+      onAuthChange?.(data?.session?.user ?? null);
+    })();
+
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth state change:', event, session ?? null);
+      onAuthChange?.(session?.user ?? null);
+    });
+
+    return () => {
+      if (listener?.subscription?.unsubscribe) listener.subscription.unsubscribe();
+    };
+  }, [onAuthChange]);
+
+  return null;
+}
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
+    let mounted = true;
+    (async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!mounted) return;
+      setUser(data?.session?.user ?? null);
+    })();
+
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
-    return () => listener?.subscription?.unsubscribe?.();
+
+    return () => {
+      mounted = false;
+      if (listener?.subscription?.unsubscribe) listener.subscription.unsubscribe();
+    };
   }, []);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    console.log('User requested signOut');
   };
 
   return (
     <>
+      <AuthLogger onAuthChange={setUser} />
+
       <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top border-bottom shadow-sm">
         <div className="container">
           <a className="navbar-brand fw-bold d-flex align-items-center" href="/">
@@ -73,7 +108,6 @@ function App() {
           </div>
         </header>
 
-        {/* Hero */}
         <section className="hero p-4 mb-4">
           <div className="row align-items-center">
             <div className="col-md-8">
@@ -88,7 +122,6 @@ function App() {
         </section>
 
         <div className="row">
-          {/* Główna kolumna: mapa */}
           <div className="col-lg-8">
             <div className="d-flex justify-content-between align-items-center mb-3">
               <div>
@@ -105,7 +138,6 @@ function App() {
               </div>
             </div>
 
-            {/* Sekcja z mapą */}
             <section id="mapSection">
               <h2 className="h5 mb-3">Mapa barów w Krakowie</h2>
               <div id="map" role="region" style={{ width: '100%', height: 560, borderRadius: '.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}></div>
@@ -114,7 +146,6 @@ function App() {
 
             <hr className="my-4" />
 
-            {/* Ostatnie spotkania */}
             <section id="recent">
               <h2 className="h5 mb-3">Ostatnie spotkania</h2>
               <ul className="list-group">
@@ -143,7 +174,6 @@ function App() {
             </section>
           </div>
 
-          {/* Panel boczny: profil, ulubione filmy, muzyka */}
           <aside className="col-lg-4">
             <div className="card mb-3">
               <div className="card-body">
@@ -203,12 +233,11 @@ function App() {
           </aside>
         </div>
 
-        <footer className="mt-4 mb-5 text-center text-muted small">
-          © {new Date().getFullYear()} P.I.W.O
-        </footer>
+
       </div>
 
       <LoginModal />
+      <RegisterModal />
     </>
   );
 }
