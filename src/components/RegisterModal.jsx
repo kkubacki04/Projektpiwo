@@ -27,7 +27,7 @@ export default function RegisterModal() {
       try {
         const { error } = await supabase
           .from('profiles')
-          .insert({
+          .upsert({
             user_id: user.id,
             full_name: meta.full_name ?? null,
             email: user.email ?? meta.email ?? null,
