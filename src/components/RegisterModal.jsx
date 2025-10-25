@@ -1,9 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import { useCreateProfileOnVerified } from '../hooks/useCreateProfileOnVerified'; // dostosuj ścieżkę jeśli potrzeba
 
 export default function RegisterModal() {
-  useCreateProfileOnVerified();
+  
+  useEffect(() => {
+    const handle = async (_event, session) => {
+      if (!session) return;
+
+      
+      const { data: fetched, error: getUserError } = await supabase.auth.getUser();
+      if (getUserError) {
+        console.warn('getUser error', getUserError);
+        return;
+      }
+      const user = fetched?.user ?? session.user;
+      if (!user) return;
+
+      const meta = user.raw_user_meta_data ?? {};
+      const emailVerified =
+        meta.email_verified === true ||
+        (typeof meta.email_verified === 'string' && meta.email_verified.toLowerCase() === 'true') ||
+        !!user.confirmed_at;
+
+      if (!emailVerified) return;
+
+      try {
+        const { error } = await supabase
+          .from('profiles')
+          .insert({
+            user_id: user.id,
+            full_name: meta.full_name ?? null,
+            email: user.email ?? meta.email ?? null,
+            created_at: new Date().toISOString()
+          }, { returning: 'minimal' });
+
+        if (error) console.warn('create profile after verify error', error);
+        else console.debug('profile created (or existed) for', user.id);
+      } catch (e) {
+        console.error('unexpected error creating profile after verify', e);
+      }
+    };
+
+    const { data: subscription } = supabase.auth.onAuthStateChange(handle);
+    return () => subscription?.unsubscribe?.();
+  }, []);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -68,8 +108,6 @@ export default function RegisterModal() {
 
       const user = signUpData?.user ?? null;
 
-      // NIE wstawiamy profilu tutaj jeśli konto nie jest zweryfikowane.
-      // Jeśli user istnieje i jest już zweryfikowany, listener zrobi insert.
       if (user) {
         const meta = user.raw_user_meta_data ?? {};
         const emailVerified =
@@ -78,7 +116,6 @@ export default function RegisterModal() {
           !!user.confirmed_at;
 
         if (emailVerified) {
-          // próbujemy insert jednym razem jeśli sesja i RLS pozwalają
           const { error: insertErr } = await supabase
             .from('profiles')
             .insert({
@@ -89,7 +126,6 @@ export default function RegisterModal() {
 
           if (insertErr) {
             console.warn('profiles insert error', insertErr);
-            // nie przerywamy flow — listener lub DB-trigger może uzupełnić później
             setError('Profil nie został utworzony automatycznie.');
           } else {
             setSuccessMsg('Konto utworzone i profil dodany.');
