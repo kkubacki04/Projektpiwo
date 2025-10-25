@@ -118,7 +118,7 @@ export default function RegisterModal() {
         if (emailVerified) {
           const { error: insertErr } = await supabase
             .from('profiles')
-            .insert({
+            .upsert({
               user_id: user.id,
               full_name: displayName || meta.full_name || null,
               created_at: new Date().toISOString()
