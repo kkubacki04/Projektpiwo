@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { useCreateProfileOnVerified } from '../hooks/useCreateProfileOnVerified'; // dostosuj ścieżkę jeśli potrzeba
 
 export default function RegisterModal() {
+  useCreateProfileOnVerified();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -62,21 +65,38 @@ export default function RegisterModal() {
       );
       console.log('signUp response', signUpData, signUpError);
       if (signUpError) throw signUpError;
+
       const user = signUpData?.user ?? null;
 
+      // NIE wstawiamy profilu tutaj jeśli konto nie jest zweryfikowane.
+      // Jeśli user istnieje i jest już zweryfikowany, listener zrobi insert.
       if (user) {
-        const { error: insertErr } = await supabase
-          .from('profiles')
-          .insert({
-            user_id: user.id,
-            full_name: displayName || null,
-            created_at: new Date().toISOString()
-          });
-        if (insertErr) {
-          console.warn('profiles insert error', insertErr);
-          setError('Profil nie został utworzony automatycznie.');
+        const meta = user.raw_user_meta_data ?? {};
+        const emailVerified =
+          meta.email_verified === true ||
+          (typeof meta.email_verified === 'string' && meta.email_verified.toLowerCase() === 'true') ||
+          !!user.confirmed_at;
+
+        if (emailVerified) {
+          // próbujemy insert jednym razem jeśli sesja i RLS pozwalają
+          const { error: insertErr } = await supabase
+            .from('profiles')
+            .insert({
+              user_id: user.id,
+              full_name: displayName || meta.full_name || null,
+              created_at: new Date().toISOString()
+            }, { returning: 'minimal' });
+
+          if (insertErr) {
+            console.warn('profiles insert error', insertErr);
+            // nie przerywamy flow — listener lub DB-trigger może uzupełnić później
+            setError('Profil nie został utworzony automatycznie.');
+          } else {
+            setSuccessMsg('Konto utworzone i profil dodany.');
+          }
+        } else {
+          setSuccessMsg('Wysłano e‑mail potwierdzający. Profil zostanie utworzony po weryfikacji e‑mail.');
         }
-        setSuccessMsg('Konto utworzone. Jesteś zalogowany.');
       } else {
         setSuccessMsg('Wysłano e‑mail potwierdzający (jeśli wymagane). Sprawdź skrzynkę.');
       }
@@ -98,30 +118,29 @@ export default function RegisterModal() {
           <div className="modal-header">
             <h5 className="modal-title" id="registerModalLabel">Rejestracja</h5>
             <button
-  type="button"
-  className="btn-close"
-  aria-label="Zamknij"
-  onClick={() => {
-    const modalEl = document.getElementById('registerModal');
-    if (!modalEl) return;
-    const bs = window.bootstrap;
-    try {
-      if (bs?.Modal) {
-        const inst = bs.Modal.getInstance(modalEl) || new bs.Modal(modalEl);
-        inst.hide();
-      } else {
-        modalEl.classList.remove('show');
-        modalEl.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
-      }
-    } catch (e) {
-      document.body.classList.remove('modal-open');
-      document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
-    }
-  }}
-/>
-
+              type="button"
+              className="btn-close"
+              aria-label="Zamknij"
+              onClick={() => {
+                const modalEl = document.getElementById('registerModal');
+                if (!modalEl) return;
+                const bs = window.bootstrap;
+                try {
+                  if (bs?.Modal) {
+                    const inst = bs.Modal.getInstance(modalEl) || new bs.Modal(modalEl);
+                    inst.hide();
+                  } else {
+                    modalEl.classList.remove('show');
+                    modalEl.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                  }
+                } catch (e) {
+                  document.body.classList.remove('modal-open');
+                  document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                }
+              }}
+            />
           </div>
 
           <form onSubmit={handleRegister}>

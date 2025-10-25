@@ -233,7 +233,8 @@ function App() {
           </aside>
         </div>
 
-
+        <footer className="mt-4 mb-5 text-center text-muted small">
+        </footer>
       </div>
 
       <LoginModal />
