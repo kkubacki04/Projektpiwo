@@ -1,63 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabaseClient';
 
+function isEmailVerified(user) {
+  const meta = user?.raw_user_meta_data ?? {};
+  return (
+    meta.email_verified === true ||
+    (typeof meta.email_verified === 'string' && meta.email_verified.toLowerCase() === 'true') ||
+    !!user?.confirmed_at
+  );
+}
+
 export default function RegisterModal() {
-  
-  useEffect(() => {
-    const handle = async (_event, session) => {
-      if (!session) return;
-
-      
-      const { data: fetched, error: getUserError } = await supabase.auth.getUser();
-      if (getUserError) {
-        console.warn('getUser error', getUserError);
-        return;
-      }
-      const user = fetched?.user ?? session.user;
-      if (!user) return;
-
-      const meta = user.raw_user_meta_data ?? {};
-      const emailVerified =
-        meta.email_verified === true ||
-        (typeof meta.email_verified === 'string' && meta.email_verified.toLowerCase() === 'true') ||
-        !!user.confirmed_at;
-
-      if (!emailVerified) return;
-
-      try {
-        const { error } = await supabase
-          .from('profiles')
-          .upsert({
-            user_id: user.id,
-            full_name: meta.full_name ?? null,
-            email: user.email ?? meta.email ?? null,
-            created_at: new Date().toISOString()
-          }, { returning: 'minimal' });
-
-        if (error) console.warn('create profile after verify error', error);
-        else console.debug('profile created (or existed) for', user.id);
-      } catch (e) {
-        console.error('unexpected error creating profile after verify', e);
-      }
-    };
-
-    const { data: subscription } = supabase.auth.onAuthStateChange(handle);
-    return () => subscription?.unsubscribe?.();
-  }, []);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [waitingForVerification, setWaitingForVerification] = useState(false);
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
+  const subscriptionRef = useRef(null);
 
   const clearForm = () => {
     setEmail('');
     setPassword('');
-    setDisplayName('');
+    setFirstName('');
+    setLastName('');
     setError(null);
     setSuccessMsg(null);
+    setWaitingForVerification(false);
+    setLoading(false);
   };
 
   const cleanupBackdrop = () => {
@@ -83,13 +55,40 @@ export default function RegisterModal() {
     }
   };
 
+  useEffect(() => {
+    const handle = async (_event, session) => {
+      if (!session) return;
+      const { data: fetched, error: getUserError } = await supabase.auth.getUser();
+      if (getUserError) return;
+      const user = fetched?.user ?? session.user;
+      if (!user) return;
+      if (!isEmailVerified(user)) {
+        setWaitingForVerification(true);
+        setLoading(true);
+        setSuccessMsg('Oczekiwanie na weryfikację e‑mail...');
+        return;
+      }
+      setWaitingForVerification(false);
+      setLoading(false);
+      setSuccessMsg('E‑mail zweryfikowany.');
+      setTimeout(() => {
+        clearForm();
+        closeModal();
+      }, 600);
+    };
+
+    const { data: subscription } = supabase.auth.onAuthStateChange(handle);
+    subscriptionRef.current = subscription;
+    return () => subscriptionRef.current?.unsubscribe?.();
+  }, []);
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setError(null);
     setSuccessMsg(null);
 
-    if (!email || !password) {
-      setError('Email i hasło są wymagane');
+    if (!email || !password || !firstName || !lastName) {
+      setError('Email, imię i nazwisko oraz hasło są wymagane');
       return;
     }
     if (password.length < 6) {
@@ -99,56 +98,28 @@ export default function RegisterModal() {
 
     setLoading(true);
     try {
-      const { data: signUpData, error: signUpError } = await supabase.auth.signUp(
-        { email, password },
-        { data: { full_name: displayName || null } }
-      );
-      console.log('signUp response', signUpData, signUpError);
-      if (signUpError) throw signUpError;
+      // eslint-disable-next-line no-unused-vars
+      const { _data, _error } = await supabase.auth.signUp({
+    options: {
+      data: {
+      first_name: firstName,
+      last_name:lastName 
+    },
+    },
+  })
 
-      const user = signUpData?.user ?? null;
 
-      if (user) {
-        const meta = user.raw_user_meta_data ?? {};
-        const emailVerified =
-          meta.email_verified === true ||
-          (typeof meta.email_verified === 'string' && meta.email_verified.toLowerCase() === 'true') ||
-          !!user.confirmed_at;
-
-        if (emailVerified) {
-          const { error: insertErr } = await supabase
-            .from('profiles')
-            .upsert({
-              user_id: user.id,
-              full_name: displayName || meta.full_name || null,
-              created_at: new Date().toISOString()
-            }, { returning: 'minimal' });
-
-          if (insertErr) {
-            console.warn('profiles insert error', insertErr);
-            setError('Profil nie został utworzony automatycznie.');
-          } else {
-            setSuccessMsg('Konto utworzone i profil dodany.');
-          }
-        } else {
-          setSuccessMsg('Wysłano e‑mail potwierdzający. Profil zostanie utworzony po weryfikacji e‑mail.');
-        }
-      } else {
-        setSuccessMsg('Wysłano e‑mail potwierdzający (jeśli wymagane). Sprawdź skrzynkę.');
-      }
-
-      clearForm();
-      setTimeout(() => closeModal(), 700);
+      setSuccessMsg('Wysłano e‑mail potwierdzający.');
+      setWaitingForVerification(true);
     } catch (err) {
-      console.error('register error', err);
       setError(err?.message || 'Błąd rejestracji');
-    } finally {
       setLoading(false);
+      setWaitingForVerification(false);
     }
   };
 
   return (
-    <div className="modal fade" id="registerModal" tabIndex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div className="modal fade" id="registerModal" tabIndex="-1" aria-labelledby="registerModalLabel" aria-hidden="true" data-bs-backdrop={waitingForVerification ? 'static' : undefined} data-bs-keyboard={waitingForVerification ? 'false' : undefined}>
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
@@ -158,6 +129,7 @@ export default function RegisterModal() {
               className="btn-close"
               aria-label="Zamknij"
               onClick={() => {
+                if (waitingForVerification) return;
                 const modalEl = document.getElementById('registerModal');
                 if (!modalEl) return;
                 const bs = window.bootstrap;
@@ -168,12 +140,10 @@ export default function RegisterModal() {
                   } else {
                     modalEl.classList.remove('show');
                     modalEl.style.display = 'none';
-                    document.body.classList.remove('modal-open');
-                    document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                    cleanupBackdrop();
                   }
                 } catch (e) {
-                  document.body.classList.remove('modal-open');
-                  document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                  cleanupBackdrop();
                 }
               }}
             />
@@ -185,8 +155,13 @@ export default function RegisterModal() {
               {successMsg && <div className="alert alert-success">{successMsg}</div>}
 
               <div className="mb-3">
-                <label htmlFor="regDisplayName" className="form-label">Imię i nazwisko</label>
-                <input id="regDisplayName" className="form-control" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="Opcjonalnie" />
+                <label htmlFor="regFirstName" className="form-label">Imię</label>
+                <input id="regFirstName" className="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="regLastName" className="form-label">Nazwisko</label>
+                <input id="regLastName" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
               </div>
 
               <div className="mb-3">
@@ -199,10 +174,17 @@ export default function RegisterModal() {
                 <input id="regPassword" type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <div className="form-text">Minimum 6 znaków</div>
               </div>
+
+              {waitingForVerification && (
+                <div className="d-flex align-items-center mt-2">
+                  <div className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+                  <div>Oczekiwanie na weryfikację e‑mail... modal pozostanie otwarty</div>
+                </div>
+              )}
             </div>
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={clearForm}>Anuluj</button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => { if (!waitingForVerification) clearForm(); }}>Anuluj</button>
               <button type="submit" className="btn btn-primary" disabled={loading}>
                 {loading ? 'Trwa rejestracja...' : 'Zarejestruj'}
               </button>

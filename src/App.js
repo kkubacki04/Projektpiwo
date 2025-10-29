@@ -3,13 +3,21 @@ import { supabase } from './supabaseClient';
 import LoginModal from './components/loginModal';
 import RegisterModal from './components/RegisterModal';
 import './index.css';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import Profil from './pages/Profil';
 
 function AuthLogger({ onAuthChange }) {
   useEffect(() => {
+    let mounted = true;
+
     (async () => {
-      const { data } = await supabase.auth.getSession();
-      console.log('AuthLogger initial session:', data?.session ?? null);
-      onAuthChange?.(data?.session?.user ?? null);
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        console.error('auth.getSession error', error);
+      } else if (mounted) {
+        console.log('AuthLogger initial session:', data?.session ?? null);
+        onAuthChange?.(data?.session?.user ?? null);
+      }
     })();
 
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
@@ -18,6 +26,7 @@ function AuthLogger({ onAuthChange }) {
     });
 
     return () => {
+      mounted = false;
       if (listener?.subscription?.unsubscribe) listener.subscription.unsubscribe();
     };
   }, [onAuthChange]);
@@ -25,17 +34,21 @@ function AuthLogger({ onAuthChange }) {
   return null;
 }
 
-function App() {
+export default function App() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let mounted = true;
     (async () => {
-      const { data } = await supabase.auth.getSession();
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        console.error('auth.getSession error', error);
+        return;
+      }
       if (!mounted) return;
       setUser(data?.session?.user ?? null);
     })();
-
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -49,6 +62,33 @@ function App() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     console.log('User requested signOut');
+    navigate('/'); // optional redirect after logout
+  };
+
+  const closeBootstrapModals = () => {
+    const bs = window.bootstrap;
+    const modals = document.querySelectorAll('.modal.show');
+    modals.forEach((modalEl) => {
+      try {
+        if (bs?.Modal) {
+          const inst = bs.Modal.getInstance(modalEl) || new bs.Modal(modalEl);
+          inst.hide();
+        } else {
+          modalEl.classList.remove('show');
+          modalEl.style.display = 'none';
+        }
+      } catch (_) {
+        modalEl.classList.remove('show');
+        modalEl.style.display = 'none';
+      }
+    });
+    document.body.classList.remove('modal-open');
+    document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+  };
+
+  const goToProfile = () => {
+    closeBootstrapModals();
+    navigate('/profile');
   };
 
   return (
@@ -57,10 +97,10 @@ function App() {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top border-bottom shadow-sm">
         <div className="container">
-          <a className="navbar-brand fw-bold d-flex align-items-center" href="/">
+          <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
             <img src="/piwo.png" alt="Kufel piwa" width="28" height="28" className="me-2" />
             P.I.W.O Spotkajmy się na piwo
-          </a>
+          </Link>
 
           <button
             className="navbar-toggler"
@@ -77,7 +117,7 @@ function App() {
           <div className="collapse navbar-collapse" id="mainNav">
             <ul className="navbar-nav ms-auto align-items-lg-center">
               <li className="nav-item">
-                <a className="nav-link" href="#profile">Profil</a>
+                <Link className="nav-link" to="/profile">Profil</Link>
               </li>
               <li className="nav-item">
                 <button type="button" className="nav-link btn btn-link" data-bs-toggle="modal" data-bs-target="#loginModal">Logowanie</button>
@@ -103,7 +143,10 @@ function App() {
             {!user ? (
               <button className="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Zaloguj</button>
             ) : (
-              <button className="btn btn-outline-danger" onClick={handleLogout}>Wyloguj</button>
+              <>
+                <button className="btn btn-outline-primary me-2" onClick={goToProfile}>Mój profil</button>
+                <button className="btn btn-outline-danger" onClick={handleLogout}>Wyloguj</button>
+              </>
             )}
           </div>
         </header>
@@ -196,7 +239,7 @@ function App() {
                 </div>
 
                 <div className="d-grid">
-                  <a href="#profile" className="btn btn-outline-primary btn-sm">Przejdź do profilu</a>
+                  <button className="btn btn-outline-primary btn-sm" onClick={goToProfile}>Przejdź do profilu</button>
                 </div>
               </div>
             </div>
@@ -239,8 +282,11 @@ function App() {
 
       <LoginModal />
       <RegisterModal />
+
+      <Routes>
+        <Route path="/" element={<div />} />
+        <Route path="/profile" element={<Profil />} />
+      </Routes>
     </>
   );
 }
-
-export default App;
