@@ -59,7 +59,10 @@ export default function RegisterModal() {
     const handle = async (_event, session) => {
       if (!session) return;
       const { data: fetched, error: getUserError } = await supabase.auth.getUser();
-      if (getUserError) return;
+      if (getUserError) {
+        console.warn('getUserError', getUserError);
+        return;
+      }
       const user = fetched?.user ?? session.user;
       if (!user) return;
       if (!isEmailVerified(user)) {
@@ -77,12 +80,17 @@ export default function RegisterModal() {
       }, 600);
     };
 
+    console.log('RegisterModal mounted, subscribing to auth changes');
     const { data: subscription } = supabase.auth.onAuthStateChange(handle);
     subscriptionRef.current = subscription;
-    return () => subscriptionRef.current?.unsubscribe?.();
+    return () => {
+      subscriptionRef.current?.unsubscribe?.();
+      console.log('RegisterModal unmounted, unsubscribed auth listener');
+    };
   }, []);
 
   const handleRegister = async (e) => {
+    console.log('handleRegister invoked');
     e.preventDefault();
     setError(null);
     setSuccessMsg(null);
@@ -97,21 +105,32 @@ export default function RegisterModal() {
     }
 
     setLoading(true);
+
     try {
-      // eslint-disable-next-line no-unused-vars
-      const { _data, _error } = await supabase.auth.signUp({
-    options: {
-      data: {
-      first_name: firstName,
-      last_name:lastName 
-    },
-    },
-  })
+      
 
+     
+      const { data, error } = await supabase.auth.signUp(
+        { email, password },
+        {
+         
+          options: { data: { first_name: firstName, last_name: lastName } }
+        }
+      );
 
-      setSuccessMsg('Wysłano e‑mail potwierdzający.');
+      console.log('signup result', { data, error });
+
+      if (error) {
+        setError(error.message || 'Błąd rejestracji');
+        setLoading(false);
+        return;
+      }
+
+      setSuccessMsg('Wysłano e‑mail potwierdzający. Sprawdź skrzynkę.');
       setWaitingForVerification(true);
+      setLoading(false);
     } catch (err) {
+      console.error('unexpected signup error', err);
       setError(err?.message || 'Błąd rejestracji');
       setLoading(false);
       setWaitingForVerification(false);
@@ -119,7 +138,15 @@ export default function RegisterModal() {
   };
 
   return (
-    <div className="modal fade" id="registerModal" tabIndex="-1" aria-labelledby="registerModalLabel" aria-hidden="true" data-bs-backdrop={waitingForVerification ? 'static' : undefined} data-bs-keyboard={waitingForVerification ? 'false' : undefined}>
+    <div
+      className="modal fade"
+      id="registerModal"
+      tabIndex="-1"
+      aria-labelledby="registerModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop={waitingForVerification ? 'static' : undefined}
+      data-bs-keyboard={waitingForVerification ? 'false' : undefined}
+    >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
@@ -195,3 +222,4 @@ export default function RegisterModal() {
     </div>
   );
 }
+ 
