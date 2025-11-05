@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home({ user, goToProfile }) {
+export default function Home({ user, goToProfile,goToMovies }) {
   const navigate = useNavigate();
 
   const handleGoToProfile = () => {
@@ -9,6 +9,13 @@ export default function Home({ user, goToProfile }) {
       goToProfile();
     } else {
       navigate('/profile');
+    }
+  };
+    const handleGoToMovies = () => {
+    if (typeof goToMovies === 'function') {
+      goToMovies();
+    } else {
+      navigate('/FavMovies');
     }
   };
 
@@ -117,7 +124,7 @@ export default function Home({ user, goToProfile }) {
                 <li className="mb-1">La La Land · 2016</li>
               </ul>
               <div className="mt-3">
-                <a className="btn btn-sm btn-outline-secondary" href="#movies">Więcej</a>
+                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleGoToMovies}>Więcej</button>
               </div>
             </div>
           </div>

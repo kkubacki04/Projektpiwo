@@ -36,7 +36,7 @@ export default function Navbar({ user, onOpenLogin,onLogout }) {
             </li>
             ) : (
               <>
-            <li className="nav-item"><a className="nav-link" href="#movies">Ulubione filmy</a></li>
+            <li className="nav-item"><Link className="nav-link" to="/FavMovies">Ulubione filmy</Link></li>
             <li className="nav-item"><a className="nav-link" href="#music">Ulubiona muzyka</a></li>
             <li className="nav-item"><a className="nav-link" href="#recent">Ostatnie spotkania</a></li>
             <li className="nav-item"><Link className="nav-link" to="/profile">Profil</Link></li>

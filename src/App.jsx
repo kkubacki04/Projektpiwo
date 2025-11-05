@@ -6,6 +6,7 @@ import LoginModal from './components/loginModal';
 import RegisterModal from './components/RegisterModal';
 import Home from './pages/home';
 import Profil from './pages/Profil';
+import FavMovies from './pages/FavMovies';
 
 function AuthLogger({ onAuthChange }) {
   useEffect(() => {
@@ -100,6 +101,10 @@ export default function App() {
     closeBootstrapModals();
     navigate('/profile');
   };
+  const goToMovies = () => {
+    closeBootstrapModals();
+    navigate('/FavMovies');
+  };
 
   const openLogin = () => {
     const modal = document.querySelector('#loginModal');
@@ -125,8 +130,9 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route path="/" element={<Home user={user} goToProfile={goToProfile} />} />
+          <Route path="/" element={<Home user={user} goToProfile={goToProfile} goToMovies={goToMovies} />} />
           <Route path="/profile" element={<Profil user={user} />} />
+          <Route path="/FavMovies" element={<FavMovies user={user} />} />
         </Routes>
       
     </>
