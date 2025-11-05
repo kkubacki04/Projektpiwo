@@ -52,6 +52,7 @@ export default function App() {
     })();
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      
     });
 
     return () => {
@@ -61,9 +62,17 @@ export default function App() {
   }, []);
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    console.log('User requested signOut');
-    navigate('/');
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('signOut error', error);
+        return;
+      }
+      console.log('User requested signOut');
+      navigate('/');
+    } catch (err) {
+      console.error('Unexpected logout error', err);
+    }
   };
 
   const closeBootstrapModals = () => {
@@ -100,35 +109,26 @@ export default function App() {
       inst?.show();
     }
   };
+//console.log('App: handleLogout type', typeof handleLogout, handleLogout);
 
   return (
     <>
-      <AuthLogger onAuthChange={setUser} />
-      <Navbar user={user} onOpenLogin={openLogin} />
+     <AuthLogger onAuthChange={setUser} />
+      <Navbar user={user} onLogout={handleLogout} onOpenLogin={openLogin} />
+
 
       <LoginModal />
       <RegisterModal />
 
-      <div style={{ paddingTop: 90 }}>
-        <header className="d-flex justify-content-between align-items-center mb-3 container">
-          <h1 className="h3">P.I.W.O</h1>
-          <div>
-            {!user ? (
-              <button className="btn btn-outline-primary" onClick={openLogin}>Zaloguj</button>
-            ) : (
-              <>
-                <button className="btn btn-outline-primary me-2" onClick={goToProfile}>Mój profil</button>
-                <button className="btn btn-outline-danger" onClick={handleLogout}>Wyloguj</button>
-              </>
-            )}
-          </div>
+    
+        <header>
         </header>
 
         <Routes>
           <Route path="/" element={<Home user={user} goToProfile={goToProfile} />} />
           <Route path="/profile" element={<Profil user={user} />} />
         </Routes>
-      </div>
+      
     </>
   );
 }
