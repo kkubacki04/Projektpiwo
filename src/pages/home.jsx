@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home({ user, goToProfile,goToMovies }) {
+export default function Home({ user, goToProfile,goToMovies,goToMusic }) {
   const navigate = useNavigate();
 
   const handleGoToProfile = () => {
@@ -16,6 +16,13 @@ export default function Home({ user, goToProfile,goToMovies }) {
       goToMovies();
     } else {
       navigate('/FavMovies');
+    }
+  };
+   const handleGoToMusic = () => {
+    if (typeof goToMusic === 'function') {
+      goToMusic();
+    } else {
+      navigate('/FavMusic');
     }
   };
 
@@ -139,7 +146,7 @@ export default function Home({ user, goToProfile,goToMovies }) {
                 <span className="badge bg-light border text-dark">Elektronika</span>
               </div>
               <div className="mt-3">
-                <a className="btn btn-sm btn-outline-secondary" href="#music">Edytuj</a>
+                <button className="btn btn-outline-primary btn-sm" onClick={handleGoToMusic}>Edytuj</button>
               </div>
             </div>
           </div>

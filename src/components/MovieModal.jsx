@@ -4,6 +4,14 @@ import { posterUrl } from '../lib/tmdb';
 export default function MovieModal({ movie, onClose }) {
   if (!movie) return null;
 
+  const title = movie.title || movie.name || 'Brak tytułu';
+  const date = movie.release_date || movie.first_air_date || 'brak daty';
+  const rating = movie.vote_average ?? '—';
+  const lang = movie.original_language ? String(movie.original_language).toUpperCase() : '—';
+  const tmdbUrl = movie.media_type === 'tv'
+    ? `https://www.themoviedb.org/tv/${movie.id}`
+    : `https://www.themoviedb.org/movie/${movie.id}`;
+
   return (
     <div className="mm-backdrop" role="dialog" onClick={onClose}>
       <div className="mm-dialog" role="document" onClick={(e) => e.stopPropagation()}>
@@ -11,21 +19,21 @@ export default function MovieModal({ movie, onClose }) {
 
         <div className="mm-content">
           <div className="mm-poster">
-            <img src={posterUrl(movie.poster_path)} alt={movie.title} />
+            <img src={posterUrl(movie.poster_path)} alt={title} />
           </div>
 
           <div className="mm-body">
-            <h3 className="mm-title">{movie.title}</h3>
+            <h3 className="mm-title">{title}</h3>
             <div className="mm-meta">
-              <span className="mm-badge">⭐ {movie.vote_average ?? '—'}</span>
-              <span className="mm-date">{movie.release_date ?? 'brak daty'}</span>
-              <span className="mm-lang">{movie.original_language?.toUpperCase()}</span>
+              <span className="mm-badge">⭐ {rating}</span>
+              <span className="mm-date">{date}</span>
+              <span className="mm-lang">{lang}</span>
             </div>
 
             <p className="mm-overview">{movie.overview || 'Brak opisu.'}</p>
 
             <div className="mm-actions">
-              <a className="btn btn-primary" href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noreferrer">
+              <a className="btn btn-primary" href={tmdbUrl} target="_blank" rel="noreferrer">
                 Zobacz w TMDB
               </a>
               <button className="btn btn-outline-secondary" onClick={onClose}>Zamknij</button>

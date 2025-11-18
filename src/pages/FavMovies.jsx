@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { searchMovies, popularMovies } from '../lib/tmdb';
+import { searchMovies, popularMovies, searchSeries, popularSeries } from '../lib/tmdb';
 import MovieCard from '../components/MovieCard';
 import MovieModal from '../components/MovieModal';
 import '../index.css';
@@ -12,35 +12,47 @@ export default function FavMovies() {
   const [loading, setLoading] = useState(false);
   const debounceRef = useRef(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [mode, setMode] = useState('popular'); 
+  const [mode, setMode] = useState('popular');
+  const [mediaType, setMediaType] = useState('movie');
 
-  const fetchPage = async (p = 1, q = query) => {
-    setLoading(true);
-    try {
-      if (!q) {
-        const data = await popularMovies(p);
-        setResults(data.results || []);
-        setTotalPages(data.total_pages || 0);
-        setPage(p);
-        setMode('popular');
-      } else {
-        const data = await searchMovies(q, p);
-        setResults(data.results || []);
-        setTotalPages(data.total_pages || 0);
-        setPage(p);
-        setMode('search');
-      }
-    } catch (err) {
-      console.error('Fetch error', err);
-      setResults([]);
-      setTotalPages(0);
-    } finally {
-      setLoading(false);
-    }
+  const normalizeResults = (dataResults = [], type = 'movie') => {
+    return (dataResults || []).map(item => ({
+      ...item,
+      title: item.title || item.name || '',
+      release_date: item.release_date || item.first_air_date || '',
+      media_type: type,
+    }));
   };
 
+  const fetchPage = async (p = 1, q = query, type = mediaType) => {
+  setLoading(true);
+  try {
+    if (!q) {
+      const data = type === 'tv' ? await popularSeries(p) : await popularMovies(p);
+      const normalized = normalizeResults(data.results, type);
+      setResults(normalized);
+      setTotalPages( 100 || 0);
+      setPage(p);
+      setMode('popular');
+    } else {
+      const data = type === 'tv' ? await searchSeries(q, p) : await searchMovies(q, p);
+      const normalized = normalizeResults(data.results, type);
+      setResults(normalized);
+      setTotalPages( 20 || 0);
+      setPage(p);
+      setMode('search');
+    }
+  } catch (err) {
+    console.error('Fetch error', err);
+    setResults([]);
+    setTotalPages(0);
+  } finally {
+    setLoading(false);
+  }
+};
+
   useEffect(() => {
-    fetchPage(1, '');
+    fetchPage(1, '', mediaType);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -49,24 +61,29 @@ export default function FavMovies() {
 
     if (!query) {
       debounceRef.current = setTimeout(() => {
-        fetchPage(1, '');
+        fetchPage(1, '', mediaType);
       }, 150);
       return () => clearTimeout(debounceRef.current);
     }
 
     debounceRef.current = setTimeout(() => {
-      fetchPage(1, query);
+      fetchPage(1, query, mediaType);
     }, 350);
 
     return () => clearTimeout(debounceRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [query, mediaType]);
 
   useEffect(() => {
-    if (page === 1 && mode === 'popular' && !query) return;
-    fetchPage(page, query);
+    fetchPage(page, query, mediaType);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
+
+  const handleMediaTypeChange = (type) => {
+    if (type === mediaType) return;
+    setMediaType(type);
+    setPage(1);
+  };
 
   const handleCardClick = (movie) => {
     setSelectedMovie(movie);
@@ -75,14 +92,32 @@ export default function FavMovies() {
   const handleClearSearch = () => {
     setQuery('');
     setPage(1);
-    fetchPage(1, '');
+    fetchPage(1, '', mediaType);
   };
 
   return (
     <div className="container" style={{ paddingTop: 90 }}>
       <h2>Przeglądaj filmy</h2>
 
-      <div style={{ margin: '1rem 0', display: 'flex', gap: 8 }}>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center', margin: '1rem 0' }}>
+        <div role="tablist" aria-label="Wybierz typ">
+          <button
+            className={`btn ${mediaType === 'movie' ? 'btn-primary' : 'btn-outline-secondary'}`}
+            onClick={() => handleMediaTypeChange('movie')}
+            aria-pressed={mediaType === 'movie'}
+            style={{ marginRight: 8 }}
+          >
+            Filmy
+          </button>
+          <button
+            className={`btn ${mediaType === 'tv' ? 'btn-primary' : 'btn-outline-secondary'}`}
+            onClick={() => handleMediaTypeChange('tv')}
+            aria-pressed={mediaType === 'tv'}
+          >
+            Seriale
+          </button>
+        </div>
+
         <input
           type="search"
           placeholder="Szukaj po tytule..."
@@ -90,6 +125,7 @@ export default function FavMovies() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           aria-label="Szukaj filmów"
+          style={{ marginLeft: 8, flex: 1 }}
         />
         {query && (
           <button className="btn btn-outline-secondary" onClick={handleClearSearch}>Wyczyść</button>
@@ -97,19 +133,19 @@ export default function FavMovies() {
       </div>
 
       <div style={{ marginBottom: 8, color: '#666' }}>
-        {mode === 'popular' && <span>Wyświetlane: Popularne filmy</span>}
+        {mode === 'popular' && <span>Wyświetlane: {mediaType === 'movie' ? 'Popularne filmy' : 'Popularne seriale'}</span>}
         {mode === 'search' && <span>Wyniki wyszukiwania dla: "{query}"</span>}
       </div>
 
       {loading && <p>Ładowanie wyników…</p>}
 
       {!loading && results.length === 0 && (
-        <p>{query ? `Brak wyników dla "${query}".` : 'Brak popularnych filmów do wyświetlenia.'}</p>
+        <p>{query ? `Brak wyników dla "${query}".` : (mediaType === 'movie' ? 'Brak popularnych filmów do wyświetlenia.' : 'Brak popularnych seriali do wyświetlenia.')}</p>
       )}
 
       <div className="movie-grid" aria-live="polite">
         {results.map(movie => (
-          <MovieCard key={movie.id} movie={movie} onClick={handleCardClick} />
+          <MovieCard key={`${movie.media_type}-${movie.id}`} movie={movie} onClick={handleCardClick} />
         ))}
       </div>
 
@@ -131,10 +167,25 @@ export default function FavMovies() {
 
       <style>{`
         .movie-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-          gap: 1rem;
-        }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+
+@media (max-width: 1200px) {
+  .movie-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 992px) {
+  .movie-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 576px) {
+  .movie-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 360px) {
+  .movie-grid { grid-template-columns: 1fr; }
+}
         .movie-card {
           border: 1px solid #e4e4e4;
           border-radius: 8px;

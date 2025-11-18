@@ -11,9 +11,36 @@ export async function searchMovies(query, page = 1) {
   }
   return res.json();
 }
+
 export async function popularMovies(page = 1) {
   const url = `${BASE}/movie/popular?api_key=${TMDB_KEY}&language=pl-PL&page=${page}`;
-  return fetch(url);
+  const res = await fetch(url);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`TMDB popular failed: ${res.status} ${text}`);
+  }
+  return res.json();
+}
+
+export async function searchSeries(query, page = 1) {
+  if (!query) return { results: [], total_pages: 0 };
+  const url = `${BASE}/search/tv?api_key=${TMDB_KEY}&language=pl-PL&query=${encodeURIComponent(query)}&page=${page}&include_adult=false`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`TMDB search TV failed: ${res.status} ${text}`);
+  }
+  return res.json();
+}
+
+export async function popularSeries(page = 1) {
+  const url = `${BASE}/tv/popular?api_key=${TMDB_KEY}&language=pl-PL&page=${page}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`TMDB popular TV failed: ${res.status} ${text}`);
+  }
+  return res.json();
 }
 
 export function posterUrl(path) {
