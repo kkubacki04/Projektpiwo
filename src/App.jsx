@@ -7,6 +7,7 @@ import RegisterModal from './components/RegisterModal';
 import Home from './pages/home';
 import Profil from './pages/Profil';
 import FavMovies from './pages/FavMovies';
+import FavMusic from './pages/FavMusic';
 
 function AuthLogger({ onAuthChange }) {
   useEffect(() => {
@@ -104,6 +105,10 @@ export default function App() {
   const goToMovies = () => {
     closeBootstrapModals();
     navigate('/FavMovies');
+  };  
+  const goToMusic = () => {
+    closeBootstrapModals();
+    navigate('/FavMusic');
   };
 
   const openLogin = () => {
@@ -114,7 +119,6 @@ export default function App() {
       inst?.show();
     }
   };
-//console.log('App: handleLogout type', typeof handleLogout, handleLogout);
 
   return (
     <>
@@ -130,9 +134,10 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route path="/" element={<Home user={user} goToProfile={goToProfile} goToMovies={goToMovies} />} />
+          <Route path="/" element={<Home user={user} goToProfile={goToProfile} goToMovies={goToMovies} goToMusic={goToMusic} />} />
           <Route path="/profile" element={<Profil user={user} />} />
           <Route path="/FavMovies" element={<FavMovies user={user} />} />
+          <Route path="/FavMusic" element={<FavMusic user={user} />} />
         </Routes>
       
     </>
