@@ -36,3 +36,7 @@
                 height: 420px;
             }
         }
+        .marker-red { filter: hue-rotate(0deg) saturate(2); }
+.marker-blue { filter: hue-rotate(200deg) saturate(2); }
+.marker-purple { filter: hue-rotate(280deg) saturate(2); }
+.marker-green { filter: hue-rotate(100deg) saturate(2); }

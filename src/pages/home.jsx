@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import MapLeaflet from '../components/MapLeaflet';
 
-export default function Home({ user, goToProfile,goToMovies,goToMusic }) {
+export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
   const navigate = useNavigate();
 
   const handleGoToProfile = () => {
@@ -11,14 +12,14 @@ export default function Home({ user, goToProfile,goToMovies,goToMusic }) {
       navigate('/profile');
     }
   };
-    const handleGoToMovies = () => {
+  const handleGoToMovies = () => {
     if (typeof goToMovies === 'function') {
       goToMovies();
     } else {
       navigate('/FavMovies');
     }
   };
-   const handleGoToMusic = () => {
+  const handleGoToMusic = () => {
     if (typeof goToMusic === 'function') {
       goToMusic();
     } else {
@@ -60,7 +61,10 @@ export default function Home({ user, goToProfile,goToMovies,goToMusic }) {
 
           <section id="mapSection">
             <h2 className="h5 mb-3">Mapa barów w Krakowie</h2>
-            <div id="map" role="region" style={{ width: '100%', height: 560, borderRadius: '.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
+
+            {/* Tutaj wstawiamy komponent mapy */}
+            <MapLeaflet />
+
             <p className="small text-muted mt-2">Kliknij marker, aby otworzyć formularz dołączenia do spotkania.</p>
           </section>
 

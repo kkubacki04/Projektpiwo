@@ -1,0 +1,2993 @@
+{
+  "places": [
+    {
+      "name": "BarBar Krakow",
+      "rating": 4.9,
+      "reviews": 363,
+      "operating_hours": {
+        "sunday": "1 PM–1 AM",
+        "monday": "Closed",
+        "tuesday": "3 PM–1 AM",
+        "wednesday": "3 PM–1 AM",
+        "thursday": "3 PM–1 AM",
+        "friday": "3 PM–4 AM",
+        "saturday": "1 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.054136299999996,
+        "longitude": 19.9455177
+      },
+      "address": "Świętego Sebastiana 33, 31-051 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJRRyK1bFbFkcRQHJDAPO9fXQ"
+    },
+    {
+      "name": "Cybermachina Game Pub - Kraków",
+      "rating": 4.5,
+      "reviews": 2891,
+      "operating_hours": {
+        "sunday": "3 PM–12 AM",
+        "monday": "5 PM–12 AM",
+        "tuesday": "5 PM–12 AM",
+        "wednesday": "5 PM–1 AM",
+        "thursday": "5 PM–1 AM",
+        "friday": "3 PM–3 AM",
+        "saturday": "3 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0598726,
+        "longitude": 19.938689399999998
+      },
+      "address": "Stolarska 13, 31-043 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJkzfDahJbFkcRegGjVHI-gYY"
+    },
+    {
+      "name": "Multi Qlti Tap Bar | Craft Beer",
+      "rating": 4.6,
+      "reviews": 4014,
+      "operating_hours": {
+        "sunday": "2 PM–12 AM",
+        "monday": "4–11 PM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–1 AM",
+        "friday": "4 PM–2 AM",
+        "saturday": "2 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0628837,
+        "longitude": 19.9343811
+      },
+      "address": "Szewska 21, 31-009 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJJyF2hQ5bFkcRNxlEU7GLkrs"
+    },
+    {
+      "name": "Szototo",
+      "rating": 4.6,
+      "reviews": 1188,
+      "operating_hours": {
+        "sunday": "6 PM–12 AM",
+        "monday": "5 PM–12 AM",
+        "tuesday": "5 PM–1 AM",
+        "wednesday": "5 PM–1 AM",
+        "thursday": "5 PM–1 AM",
+        "friday": "6 PM–3 AM",
+        "saturday": "6 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.060601,
+        "longitude": 19.935935699999998
+      },
+      "address": "Bracka 3/5, 31-005 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJL9W6FhJbFkcRprm2YjaT_js"
+    },
+    {
+      "name": "Dobry Kumpel",
+      "rating": 4.5,
+      "reviews": 1761,
+      "operating_hours": {
+        "sunday": "1 PM–1 AM",
+        "monday": "1 PM–1 AM",
+        "tuesday": "1 PM–1 AM",
+        "wednesday": "1 PM–1 AM",
+        "thursday": "1 PM–1 AM",
+        "friday": "1 PM–2 AM",
+        "saturday": "1 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.064181999999995,
+        "longitude": 19.941072
+      },
+      "address": "Floriańska 47, 31-019 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJyyQzLhBbFkcRT1JpiIgtwDY"
+    },
+    {
+      "name": "Movida | Cocktail Bar",
+      "rating": 4.6,
+      "reviews": 1532,
+      "operating_hours": {
+        "sunday": "4:30 PM–1 AM",
+        "monday": "4:30 PM–1 AM",
+        "tuesday": "4:30 PM–1 AM",
+        "wednesday": "4:30 PM–1 AM",
+        "thursday": "4:30 PM–2 AM",
+        "friday": "4 PM–1:30 AM",
+        "saturday": "4 PM–1:30 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.061364499999996,
+        "longitude": 19.9422245
+      },
+      "address": "Mikołajska 9, 31-027 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJSW1PeBFbFkcRd5KSqsAnwfI"
+    },
+    {
+      "name": "Wiśniewski Kraków",
+      "rating": 4.9,
+      "reviews": 553,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0634655,
+        "longitude": 19.9350336
+      },
+      "address": "plac Szczepański 2/1, 31-011 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJd6j_G-lbFkcROYZhHDZKmF8"
+    },
+    {
+      "name": "Rumour Cocktail Bar",
+      "rating": 4.9,
+      "reviews": 907,
+      "operating_hours": {
+        "sunday": "5 PM–12 AM",
+        "monday": "5 PM–12 AM",
+        "tuesday": "5 PM–12 AM",
+        "wednesday": "5 PM–12 AM",
+        "thursday": "5 PM–1 AM",
+        "friday": "5 PM–2 AM",
+        "saturday": "5 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.065153599999995,
+        "longitude": 19.939029899999998
+      },
+      "address": "Pijarska 9, 31-015 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJq-LA3QZbFkcRkCHvmcut2gA"
+    },
+    {
+      "name": "Single Scena Music Bar",
+      "rating": 4.7,
+      "reviews": 630,
+      "operating_hours": {
+        "sunday": "1 PM–1 AM",
+        "monday": "1 PM–1 AM",
+        "tuesday": "1 PM–1 AM",
+        "wednesday": "1 PM–1 AM",
+        "thursday": "1 PM–1 AM",
+        "friday": "1 PM–3 AM",
+        "saturday": "1 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.063542899999995,
+        "longitude": 19.9405196
+      },
+      "address": "św. Marka 21, 31-020 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJEyDzkaFbFkcRxkTRjmmcskw"
+    },
+    {
+      "name": "Piwnica Pod Baranami",
+      "rating": 4.8,
+      "reviews": 4402,
+      "operating_hours": {
+        "sunday": "11 AM–11:30 PM",
+        "monday": "11 AM–12 AM",
+        "tuesday": "11 AM–12 AM",
+        "wednesday": "11 AM–12 AM",
+        "thursday": "11 AM–12 AM",
+        "friday": "11 AM–1:30 AM",
+        "saturday": "11 AM–1:30 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.061521,
+        "longitude": 19.9354229
+      },
+      "address": "Pałac Pod Baranami, Rynek Główny 27, 31-010 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJlw8d3A1bFkcRqJxp52Plnk4"
+    },
+    {
+      "name": "C.K. Browar | Bar & Restaurant | Est. 1996",
+      "rating": 4.6,
+      "reviews": 7372,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–1 AM",
+        "saturday": "12 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.063413499999996,
+        "longitude": 19.9326111
+      },
+      "address": "Podwale 7, 31-118 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJf4Etug5bFkcRyq0rJ_UpcGk"
+    },
+    {
+      "name": "Free Pub",
+      "rating": 4.6,
+      "reviews": 1481,
+      "operating_hours": {
+        "sunday": "3 PM–2 AM",
+        "monday": "3 PM–2 AM",
+        "tuesday": "3 PM–2 AM",
+        "wednesday": "3 PM–2 AM",
+        "thursday": "3 PM–2 AM",
+        "friday": "3 PM–3 AM",
+        "saturday": "3 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0632659,
+        "longitude": 19.9371185
+      },
+      "address": "Sławkowska 4, 31-014 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ4UsfQQ5bFkcRh8q0C40JDBU"
+    },
+    {
+      "name": "The Moon Lounge Bar & Shisha Kraków",
+      "rating": 4.6,
+      "reviews": 864,
+      "operating_hours": {
+        "sunday": "4 PM–2 AM",
+        "monday": "4 PM–2 AM",
+        "tuesday": "4 PM–2 AM",
+        "wednesday": "4 PM–2 AM",
+        "thursday": "4 PM–2 AM",
+        "friday": "4 PM–3 AM",
+        "saturday": "4 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.054997,
+        "longitude": 19.948214
+      },
+      "address": "Berka Joselewicza 21B, 31-031 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJcxWyqYdbFkcRknd2oavPaAI"
+    },
+    {
+      "name": "IVY Cocktail Bar",
+      "rating": 4.8,
+      "reviews": 243,
+      "operating_hours": {
+        "sunday": "6 PM–12 AM",
+        "monday": "6 PM–12 AM",
+        "tuesday": "6 PM–12 AM",
+        "wednesday": "6 PM–12 AM",
+        "thursday": "6 PM–1 AM",
+        "friday": "6 PM–3 AM",
+        "saturday": "6 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.062109899999996,
+        "longitude": 19.9419646
+      },
+      "address": "Św. Tomasza 31, 31-027 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJbfiWwUhbFkcRbUiLAahmvnI"
+    },
+    {
+      "name": "Bull Pub Kraków",
+      "rating": 4.2,
+      "reviews": 3152,
+      "operating_hours": {
+        "sunday": "9 AM–2:30 AM",
+        "monday": "9 AM–2 AM",
+        "tuesday": "9 AM–2 AM",
+        "wednesday": "9 AM–2 AM",
+        "thursday": "9 AM–2 AM",
+        "friday": "9 AM–3:30 AM",
+        "saturday": "9 AM–3:30 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0617139,
+        "longitude": 19.9406611
+      },
+      "address": "Mikołajska 2, 31-027 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJBVoRjhFbFkcR71B6vyQqGO0"
+    },
+    {
+      "name": "Layla Lounge Bar",
+      "rating": 4.7,
+      "reviews": 1198,
+      "operating_hours": {
+        "sunday": "11 AM–1 AM",
+        "monday": "11 AM–1 AM",
+        "tuesday": "11 AM–1 AM",
+        "wednesday": "11 AM–1 AM",
+        "thursday": "11 AM–1 AM",
+        "friday": "11 AM–2 AM",
+        "saturday": "11 AM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.056375599999996,
+        "longitude": 19.9459509
+      },
+      "address": "Józefa Dietla 91, 31-031 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJqT7T6dNbFkcRUyp4HJfIqQQ"
+    },
+    {
+      "name": "Infuzja Cocktail Bar",
+      "rating": 4.9,
+      "reviews": 579,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "5–11 PM",
+        "tuesday": "5–11 PM",
+        "wednesday": "5–11 PM",
+        "thursday": "5–11 PM",
+        "friday": "5 PM–1 AM",
+        "saturday": "5 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0711795,
+        "longitude": 19.939236299999997
+      },
+      "address": "Pędzichów 23, 31-153 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJXaw5HnFbFkcRJpG6kDNOauk"
+    },
+    {
+      "name": "Cosmic Games Pub",
+      "rating": 4.8,
+      "reviews": 6239,
+      "operating_hours": {
+        "sunday": "12 PM–1 AM",
+        "monday": "2 PM–1 AM",
+        "tuesday": "2 PM–1 AM",
+        "wednesday": "2 PM–1 AM",
+        "thursday": "2 PM–1 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0662167,
+        "longitude": 19.9300595
+      },
+      "address": "Karmelicka 27, 31-131 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJZTJEzXZbFkcRgowSNpC1-H8"
+    },
+    {
+      "name": "Stary Port Bar",
+      "rating": 4.6,
+      "reviews": 3046,
+      "operating_hours": {
+        "sunday": "12 PM–1 AM",
+        "monday": "12 PM–1 AM",
+        "tuesday": "12 PM–1 AM",
+        "wednesday": "12 PM–1 AM",
+        "thursday": "12 PM–1 AM",
+        "friday": "12 PM–3 AM",
+        "saturday": "12 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0612305,
+        "longitude": 19.931775899999998
+      },
+      "address": "Straszewskiego 27, Wejście od Jabłonowskich, 31-113 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJw1ZHFQxbFkcR5cYS3ZCGDJE"
+    },
+    {
+      "name": "Garage Pub",
+      "rating": 4.7,
+      "reviews": 815,
+      "operating_hours": {
+        "sunday": "4–11 PM",
+        "monday": "4 PM–12 AM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–2 AM",
+        "friday": "4 PM–1 AM",
+        "saturday": "4 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.059753099999995,
+        "longitude": 19.9262575
+      },
+      "address": "Marszałka Józefa Piłsudskiego 27, 33-332 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJy4hbawtbFkcRBDy3zzxM4S8"
+    },
+    {
+      "name": "Non Iron Pub",
+      "rating": 4.6,
+      "reviews": 537,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "4 PM–12 AM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–12 AM",
+        "friday": "4 PM–12 AM",
+        "saturday": "12 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0630179,
+        "longitude": 19.9421198
+      },
+      "address": "św. Marka 27, 31-024 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJ55_IsRFbFkcRSrdDkF300Ew"
+    },
+    {
+      "name": "BaniaLuka",
+      "rating": 4.3,
+      "reviews": 4359,
+      "operating_hours": {
+        "sunday": "11 AM–2 AM",
+        "monday": "10 AM–2 AM",
+        "tuesday": "10 AM–2 AM",
+        "wednesday": "10 AM–2 AM",
+        "thursday": "10 AM–5 AM",
+        "friday": "10 AM–5 AM",
+        "saturday": "10 AM–5 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0641837,
+        "longitude": 19.9360562
+      },
+      "address": "plac Szczepański 6, 31-011 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJNaSf-A5bFkcRm9ykekA9l0Y"
+    },
+    {
+      "name": "Shine Club Kraków",
+      "rating": 4.3,
+      "reviews": 4601,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "Closed",
+        "thursday": "Closed",
+        "friday": "10 PM–4 AM",
+        "saturday": "10 PM–5 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.057637299999996,
+        "longitude": 19.9443785
+      },
+      "address": "Starowiślna 16, 31-032 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJ6_e-iBRbFkcRiIxzqdSrl94"
+    },
+    {
+      "name": "Gold Club",
+      "rating": 4.7,
+      "reviews": 446,
+      "operating_hours": {
+        "sunday": "12–6 AM, 8 PM–12 AM",
+        "monday": "12–4 AM, 8 PM–12 AM",
+        "tuesday": "12–4 AM, 8 PM–12 AM",
+        "wednesday": "12–4 AM, 8 PM–12 AM",
+        "thursday": "12–4 AM, 8 PM–12 AM",
+        "friday": "12–5 AM, 8 PM–12 AM",
+        "saturday": "12–6 AM, 8 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0634316,
+        "longitude": 19.9385577
+      },
+      "address": "Świętego Jana 10, 31-018 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJLVaDGgNbFkcRmvzxCFm9laQ"
+    },
+    {
+      "name": "Klub30 Kraków",
+      "rating": 4.3,
+      "reviews": 2473,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "Closed",
+        "thursday": "Closed",
+        "friday": "9 PM–4 AM",
+        "saturday": "9 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0551177,
+        "longitude": 19.9267017
+      },
+      "address": "Tadeusza Kościuszki 3, 35-105 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJhyrcm3NbFkcRDKXKPk4yFKg"
+    },
+    {
+      "name": "La Bodega del Ron",
+      "rating": 4.1,
+      "reviews": 2437,
+      "operating_hours": {
+        "sunday": "12–6 AM, 6 PM–12 AM",
+        "monday": "12–3 AM, 6 PM–12 AM",
+        "tuesday": "12–3 AM, 6 PM–12 AM",
+        "wednesday": "12–3 AM, 6 PM–12 AM",
+        "thursday": "12–3 AM, 6 PM–12 AM",
+        "friday": "12–5 AM, 6 PM–12 AM",
+        "saturday": "12–6 AM, 6 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.061154599999995,
+        "longitude": 19.9384867
+      },
+      "address": "Rynek Główny 6, 31-042 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJcQGxCX5bFkcRzXiveOAE_VY"
+    },
+    {
+      "name": "Four Music Club",
+      "rating": 3.9,
+      "reviews": 1595,
+      "operating_hours": {
+        "sunday": "10 PM–3 AM",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "10 PM–3 AM",
+        "thursday": "10 PM–4 AM",
+        "friday": "10 PM–4 AM",
+        "saturday": "10 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.062794,
+        "longitude": 19.9353879
+      },
+      "address": "Jagiellońska 6, 31-010 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJSUJBYw5bFkcRXXpS9XDLUDk"
+    },
+    {
+      "name": "Level Up Club",
+      "rating": 4,
+      "reviews": 105,
+      "operating_hours": {
+        "sunday": "12–6 AM, 8 PM–12 AM",
+        "monday": "12–6 AM, 8 PM–12 AM",
+        "tuesday": "12–6 AM, 8 PM–12 AM",
+        "wednesday": "12–6 AM, 8 PM–12 AM",
+        "thursday": "12–6 AM, 8 PM–12 AM",
+        "friday": "12–6 AM, 8 PM–12 AM",
+        "saturday": "12–6 AM, 8 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0633719,
+        "longitude": 19.9398531
+      },
+      "address": "Floriańska 20, 33-332 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJ-yEURn9bFkcRYa6TfmbX6nQ"
+    },
+    {
+      "name": "Space Club",
+      "rating": 3.8,
+      "reviews": 432,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "10 PM–4 AM",
+        "tuesday": "Closed",
+        "wednesday": "Closed",
+        "thursday": "10 PM–4 AM",
+        "friday": "10 PM–5 AM",
+        "saturday": "10 PM–5 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0621973,
+        "longitude": 19.9352909
+      },
+      "address": "Szewska 4, 31-009 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJA1EvVhpbFkcRVTqdUkZjYG8"
+    },
+    {
+      "name": "Prozak 2.0",
+      "rating": 3.9,
+      "reviews": 2346,
+      "operating_hours": {
+        "sunday": "12–8 AM",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "10:30 PM–12 AM",
+        "thursday": "12–6 AM, 10:30 PM–12 AM",
+        "friday": "12–6 AM, 10:30 PM–12 AM",
+        "saturday": "12–8 AM, 10:30 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0590158,
+        "longitude": 19.9380797
+      },
+      "address": "plac Dominikański 6, 33-332 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJp8p_YBJbFkcR14Ev9q6gS-k"
+    },
+    {
+      "name": "Coco | Music Club",
+      "rating": 4,
+      "reviews": 1806,
+      "operating_hours": {
+        "sunday": "12–6 AM",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "Closed",
+        "thursday": "10 PM–12 AM",
+        "friday": "12–5 AM, 10 PM–12 AM",
+        "saturday": "12–6 AM, 10 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0642229,
+        "longitude": 19.9421735
+      },
+      "address": "Szpitalna 38, 31-024 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJUzxtRxBbFkcRT14eXW3gduk"
+    },
+    {
+      "name": "Ciemnia Club",
+      "rating": 3.9,
+      "reviews": 362,
+      "operating_hours": {
+        "sunday": "12–10 AM, 9 PM–12 AM",
+        "monday": "12–4 AM",
+        "tuesday": "9 PM–12 AM",
+        "wednesday": "12–6 AM, 9 PM–12 AM",
+        "thursday": "12–6 AM, 9 PM–12 AM",
+        "friday": "12–6 AM, 9 PM–12 AM",
+        "saturday": "12–10 AM, 9 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0687341,
+        "longitude": 19.9392882
+      },
+      "address": "Świętego Filipa 7, 31-150 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJKf9IxwVbFkcRAGzaGZL300o"
+    },
+    {
+      "name": "Forty Kleparz Music Club",
+      "rating": 4.7,
+      "reviews": 2021,
+      "operating_hours": {
+        "sunday": "12–9 PM",
+        "monday": "Closed",
+        "tuesday": "12–10 PM",
+        "wednesday": "12–10 PM",
+        "thursday": "12–10 PM",
+        "friday": "Closed",
+        "saturday": "12–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.074631499999995,
+        "longitude": 19.9374722
+      },
+      "address": "Kamienna 2/4, 30-001 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJIeEXDAFbFkcRhofqrbSjM88"
+    },
+    {
+      "name": "Old Fashioned Cafe & Bar 2.0",
+      "rating": 4.9,
+      "reviews": 95,
+      "operating_hours": {
+        "sunday": "5 PM–1 AM",
+        "monday": "5 PM–1 AM",
+        "tuesday": "5 PM–1 AM",
+        "wednesday": "5 PM–1 AM",
+        "thursday": "5 PM–1 AM",
+        "friday": "3 PM–2 AM",
+        "saturday": "3 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0642329,
+        "longitude": 19.937718999999998
+      },
+      "address": "Sławkowska 20, 33-332 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ02DRScRbFkcRMrsFFqAsO3Q"
+    },
+    {
+      "name": "Pergamin 2.0 Lounge & Skybar",
+      "rating": 4.9,
+      "reviews": 75,
+      "operating_hours": {
+        "sunday": "1–11 PM",
+        "monday": "Closed",
+        "tuesday": "5–11 PM",
+        "wednesday": "5–11 PM",
+        "thursday": "5–11 PM",
+        "friday": "1 PM–1 AM",
+        "saturday": "1 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.055744399999995,
+        "longitude": 19.9278843
+      },
+      "address": "Aleja Zygmunta Krasińskiego 1/7 piętro, 31-111 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJJ5plTEVbFkcROZ6eOhgOq3w"
+    },
+    {
+      "name": "PAS",
+      "rating": 4.8,
+      "reviews": 52,
+      "operating_hours": {
+        "sunday": "3 PM–12 AM",
+        "monday": "Closed",
+        "tuesday": "5 PM–12 AM",
+        "wednesday": "5 PM–12 AM",
+        "thursday": "5 PM–12 AM",
+        "friday": "5 PM–4 AM",
+        "saturday": "3 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.060407,
+        "longitude": 19.9389721
+      },
+      "address": "Stolarska 5, 33-332 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJbUNtR9lbFkcRmYDp6eNsGXk"
+    },
+    {
+      "name": "Opus Lounge Bar",
+      "rating": 4.9,
+      "reviews": 114,
+      "operating_hours": {
+        "sunday": "4 PM–12 AM",
+        "monday": "4 PM–12 AM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–1 AM",
+        "friday": "4 PM–1 AM",
+        "saturday": "4 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.056776299999996,
+        "longitude": 19.928376
+      },
+      "address": "plac Kossaka 6, 31-106 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJj2ndZZpbFkcRvOQR6bv5G6A"
+    },
+    {
+      "name": "Sababa cocktail bar",
+      "rating": 4.6,
+      "reviews": 505,
+      "operating_hours": {
+        "sunday": "6 PM–12 AM",
+        "monday": "Closed",
+        "tuesday": "6 PM–12 AM",
+        "wednesday": "6 PM–12 AM",
+        "thursday": "6 PM–12 AM",
+        "friday": "6 PM–2 AM",
+        "saturday": "6 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0531819,
+        "longitude": 19.947627999999998
+      },
+      "address": "Szeroka 2, 31-056 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ80X4oWpbFkcRjV_BERtSuMk"
+    },
+    {
+      "name": "Shot Bar BANG BANG",
+      "rating": 4.8,
+      "reviews": 1948,
+      "operating_hours": {
+        "sunday": "2 PM–2 AM",
+        "monday": "2:30 PM–2 AM",
+        "tuesday": "2:30 PM–2 AM",
+        "wednesday": "2:30 PM–3 AM",
+        "thursday": "2:30 PM–3 AM",
+        "friday": "2:30 PM–4 AM",
+        "saturday": "2 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0529966,
+        "longitude": 19.946168699999998
+      },
+      "address": "Miodowa 31, 31-055 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJDT__6N5bFkcRREqhqi30nxM"
+    },
+    {
+      "name": "ShotBar Kajtek",
+      "rating": 4.9,
+      "reviews": 92,
+      "operating_hours": {
+        "sunday": "5 PM–12 AM",
+        "monday": "5 PM–12 AM",
+        "tuesday": "5 PM–12 AM",
+        "wednesday": "5 PM–12 AM",
+        "thursday": "5 PM–12 AM",
+        "friday": "5 PM–3 AM",
+        "saturday": "5 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0630518,
+        "longitude": 19.9333916
+      },
+      "address": "Szewska 26, 31-009 Kraków-Śródmieście, Poland",
+      "category": "bar",
+      "place_id": "ChIJZVs7EQBbFkcRPXUVxkB9hLc"
+    },
+    {
+      "name": "Papito's Shots & Sliders",
+      "rating": 4.3,
+      "reviews": 812,
+      "operating_hours": {
+        "sunday": "12–6 AM, 6 PM–12 AM",
+        "monday": "12–5 AM, 6 PM–12 AM",
+        "tuesday": "12–5 AM, 6 PM–12 AM",
+        "wednesday": "12–5 AM, 6 PM–12 AM",
+        "thursday": "12–5 AM, 6 PM–12 AM",
+        "friday": "12–5 AM, 6 PM–12 AM",
+        "saturday": "12–6 AM, 6 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0620287,
+        "longitude": 19.934685299999998
+      },
+      "address": "Jagiellońska 10, 31-010 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJeUUM1Q1bFkcRRtBXFXO6ZCY"
+    },
+    {
+      "name": "Ferment",
+      "rating": 4.8,
+      "reviews": 188,
+      "operating_hours": {
+        "sunday": "12–10 PM",
+        "monday": "5–10 PM",
+        "tuesday": "12–10 PM",
+        "wednesday": "12–10 PM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–12 AM",
+        "saturday": "12 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.065472899999996,
+        "longitude": 19.953890299999998
+      },
+      "address": "Lubicz 40, 31-512 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJm1x9texbFkcRE31Hzdr8t4A"
+    },
+    {
+      "name": "Delta Dietla - Wine bar Kraków",
+      "rating": 4.9,
+      "reviews": 291,
+      "operating_hours": {
+        "sunday": "3–11 PM",
+        "monday": "Closed",
+        "tuesday": "5–11 PM",
+        "wednesday": "5–11 PM",
+        "thursday": "5–11 PM",
+        "friday": "3 PM–12 AM",
+        "saturday": "3 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.055777299999995,
+        "longitude": 19.9455074
+      },
+      "address": "Józefa Dietla 85, 31-050 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJGTmwtXNbFkcRAHbuDRD84Sw"
+    },
+    {
+      "name": "Wine Bar and Shop stoccaggio",
+      "rating": 4.8,
+      "reviews": 372,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "3–11 PM",
+        "tuesday": "3–11 PM",
+        "wednesday": "3–11 PM",
+        "thursday": "3–11 PM",
+        "friday": "3–11 PM",
+        "saturday": "3–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0635986,
+        "longitude": 19.9307385
+      },
+      "address": "Krupnicza 9, 31-123 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ_2UmTglbFkcRTNBG5-53WrY"
+    },
+    {
+      "name": "Czarna Owca • Wino Bar • Kraków Wine Bar",
+      "rating": 4.8,
+      "reviews": 415,
+      "operating_hours": {
+        "sunday": "4 PM–1 AM",
+        "monday": "4 PM–1 AM",
+        "tuesday": "4 PM–1 AM",
+        "wednesday": "4 PM–1 AM",
+        "thursday": "4 PM–1 AM",
+        "friday": "4 PM–1 AM",
+        "saturday": "4 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0506728,
+        "longitude": 19.9496881
+      },
+      "address": "Dajwór 20/LU6, 31-052 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ1UAKpkFbFkcRkTPqJgynOMY"
+    },
+    {
+      "name": "Tawerna Winne Grono",
+      "rating": 4.7,
+      "reviews": 835,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–1 AM",
+        "saturday": "12 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0658612,
+        "longitude": 19.9254356
+      },
+      "address": "Czarnowiejska 23, 31-126 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJwXO-2QlbFkcRCmArZiIoxNM"
+    },
+    {
+      "name": "Moti Wine Bar & Shop",
+      "rating": 5,
+      "reviews": 204,
+      "operating_hours": {
+        "sunday": "1–10 PM",
+        "monday": "1–10 PM",
+        "tuesday": "1–10 PM",
+        "wednesday": "1–10 PM",
+        "thursday": "1–10 PM",
+        "friday": "11 AM–11 PM",
+        "saturday": "11 AM–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0678651,
+        "longitude": 19.9408192
+      },
+      "address": "Rynek Kleparski 14, 31-150 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ6X_5BIdbFkcRD1bHuR4rK2k"
+    },
+    {
+      "name": "Wine Garage Józefitów restaurant & wine bar",
+      "rating": 4.7,
+      "reviews": 255,
+      "operating_hours": {
+        "sunday": "8 AM–1 PM",
+        "monday": "8 AM–10 PM",
+        "tuesday": "8 AM–10 PM",
+        "wednesday": "8 AM–10 PM",
+        "thursday": "8 AM–10 PM",
+        "friday": "8 AM–10 PM",
+        "saturday": "8 AM–10 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.071033299999996,
+        "longitude": 19.9241194
+      },
+      "address": "Józefitów 8, 30-039 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJFclRb6RbFkcREZzANLHNRBM"
+    },
+    {
+      "name": "Pijana Wisnia",
+      "rating": 4.7,
+      "reviews": 1788,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–1 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0597436,
+        "longitude": 19.937845499999998
+      },
+      "address": "Grodzka 10, 80-841 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJSSXvDN1bFkcREHQXwdbUIxI"
+    },
+    {
+      "name": "NOTO wine bar | Kraków Kazimierz",
+      "rating": 4.9,
+      "reviews": 680,
+      "operating_hours": {
+        "sunday": "1:30–11 PM",
+        "monday": "5–11 PM",
+        "tuesday": "5–11 PM",
+        "wednesday": "5–11 PM",
+        "thursday": "5–11 PM",
+        "friday": "5 PM–12 AM",
+        "saturday": "1 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.051192699999994,
+        "longitude": 19.9429709
+      },
+      "address": "Beera Meiselsa 14, 31-063 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJl_Nvy8BbFkcROArmqJKmkFc"
+    },
+    {
+      "name": "Dzikie Wino Na Kleparzu",
+      "rating": 4.6,
+      "reviews": 75,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "9 AM–5 PM",
+        "tuesday": "9 AM–5 PM",
+        "wednesday": "9 AM–5 PM",
+        "thursday": "9 AM–5 PM",
+        "friday": "9 AM–5 PM",
+        "saturday": "8:30 AM–5 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0678157,
+        "longitude": 19.9416232
+      },
+      "address": "Rynek Kleparski 20, 31-157 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJh-jSjtZbFkcRM-vvXJcp52Y"
+    },
+    {
+      "name": "Klimaty Południa - Restauracja i Winiarnia",
+      "rating": 4.7,
+      "reviews": 1951,
+      "operating_hours": {
+        "sunday": "12–10 PM",
+        "monday": "Closed",
+        "tuesday": "1–11 PM",
+        "wednesday": "1–11 PM",
+        "thursday": "1–11 PM",
+        "friday": "1–11 PM",
+        "saturday": "12–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.058515299999996,
+        "longitude": 19.941068299999998
+      },
+      "address": "Świętej Gertrudy 5, 31-046 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJr4s_phNbFkcRqP36JWGthnQ"
+    },
+    {
+      "name": "Kawa i Wino",
+      "rating": 4.4,
+      "reviews": 99,
+      "operating_hours": {
+        "sunday": "10 AM–6 PM",
+        "monday": "9 AM–6 PM",
+        "tuesday": "9 AM–6 PM",
+        "wednesday": "9 AM–6 PM",
+        "thursday": "9 AM–6 PM",
+        "friday": "9 AM–8 PM",
+        "saturday": "8 AM–8 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0668641,
+        "longitude": 19.9408387
+      },
+      "address": "Rynek Kleparski 20, Kioski 42, 31-150 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJqc_PtONbFkcRls_lpYPMIa0"
+    },
+    {
+      "name": "Viva la Pinta",
+      "rating": 4.6,
+      "reviews": 3753,
+      "operating_hours": {
+        "sunday": "2–11 PM",
+        "monday": "4 PM–12 AM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–12 AM",
+        "friday": "4 PM–2 AM",
+        "saturday": "2 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0626111,
+        "longitude": 19.939747099999998
+      },
+      "address": "Floriańska 13, 31-019 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJb_5v3RFbFkcRWVor9utoj_M"
+    },
+    {
+      "name": "Świat Piwa",
+      "rating": 4.8,
+      "reviews": 840,
+      "operating_hours": {
+        "sunday": "10 AM–11 PM",
+        "monday": "10 AM–11 PM",
+        "tuesday": "10 AM–11 PM",
+        "wednesday": "10 AM–11 PM",
+        "thursday": "10 AM–12 AM",
+        "friday": "10 AM–12 AM",
+        "saturday": "10 AM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0648487,
+        "longitude": 19.9306882
+      },
+      "address": "Rajska 6, 31-124 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJAzrlDwhbFkcR623JrI1LQIQ"
+    },
+    {
+      "name": "Poli Craft Beers & Cocktails Bar",
+      "rating": 4.6,
+      "reviews": 746,
+      "operating_hours": {
+        "sunday": "2–11 PM",
+        "monday": "2–11 PM",
+        "tuesday": "2 PM–12 AM",
+        "wednesday": "2 PM–12 AM",
+        "thursday": "2 PM–12 AM",
+        "friday": "2 PM–1:30 AM",
+        "saturday": "2 PM–1:30 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0568478,
+        "longitude": 19.9463696
+      },
+      "address": "Józefa Dietla 97, 31-031 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJqexg-xRbFkcR4OlSvuSfR-Q"
+    },
+    {
+      "name": "KORBA Piwo Kawiarnia",
+      "rating": 4.6,
+      "reviews": 1414,
+      "operating_hours": {
+        "sunday": "11 AM–2 AM",
+        "monday": "11 AM–2 AM",
+        "tuesday": "11 AM–2 AM",
+        "wednesday": "11 AM–2 AM",
+        "thursday": "11 AM–2 AM",
+        "friday": "11 AM–2 AM",
+        "saturday": "11 AM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0666849,
+        "longitude": 19.9428938
+      },
+      "address": "plac Jana Matejki 6, 31-157 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJsdw3sBpbFkcRjQgAxoXy6yU"
+    },
+    {
+      "name": "Radocha",
+      "rating": 4.7,
+      "reviews": 811,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0558419,
+        "longitude": 19.9411435
+      },
+      "address": "Świętego Sebastiana 6, 31-049 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ49hPUhNbFkcRENP3hKJAVk0"
+    },
+    {
+      "name": "Nowy Kraftowy",
+      "rating": 4.7,
+      "reviews": 3092,
+      "operating_hours": {
+        "sunday": "1 PM–12 AM",
+        "monday": "3 PM–12 AM",
+        "tuesday": "3 PM–1 AM",
+        "wednesday": "3 PM–1 AM",
+        "thursday": "3 PM–1 AM",
+        "friday": "3 PM–2 AM",
+        "saturday": "1 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0517933,
+        "longitude": 19.9443245
+      },
+      "address": "plac Nowy 8, 31-056 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJaQg6D3ZbFkcRCHhy2WajBHo"
+    },
+    {
+      "name": "T.E.A. TIME Brewpub",
+      "rating": 4.5,
+      "reviews": 1299,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "4 PM–12 AM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–12 AM",
+        "friday": "4 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.050099599999996,
+        "longitude": 19.9364737
+      },
+      "address": "Józefa Dietla 1, 31-070 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJQ6OruW5bFkcRrFkgEW_19pg"
+    },
+    {
+      "name": "Pub Stary Pies",
+      "rating": 4.9,
+      "reviews": 112,
+      "operating_hours": {
+        "sunday": "3 PM–12 AM",
+        "monday": "3 PM–12 AM",
+        "tuesday": "3 PM–12 AM",
+        "wednesday": "3 PM–12 AM",
+        "thursday": "3 PM–12 AM",
+        "friday": "3 PM–1 AM",
+        "saturday": "3 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.069495499999995,
+        "longitude": 19.9382225
+      },
+      "address": "Pędzichów 3, 31-152 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJpwxKZwBbFkcRs2-2qXWN1qA"
+    },
+    {
+      "name": "Bierhalle KRAKÓW",
+      "rating": 4.2,
+      "reviews": 3286,
+      "operating_hours": {
+        "sunday": "12–11 PM",
+        "monday": "12–10 PM",
+        "tuesday": "12–10 PM",
+        "wednesday": "12–10 PM",
+        "thursday": "12–10 PM",
+        "friday": "12–11 PM",
+        "saturday": "12–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0608398,
+        "longitude": 19.940380299999998
+      },
+      "address": "Mały Rynek 7, 31-041 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJx3B9JhJbFkcR2ugY6BA4ZzE"
+    },
+    {
+      "name": "Zaraz Wracam Tu",
+      "rating": 4.5,
+      "reviews": 1155,
+      "operating_hours": {
+        "sunday": "3 PM–12 AM",
+        "monday": "3 PM–1 AM",
+        "tuesday": "3 PM–1 AM",
+        "wednesday": "3 PM–1 AM",
+        "thursday": "3 PM–1 AM",
+        "friday": "3 PM–3 AM",
+        "saturday": "3 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0537571,
+        "longitude": 19.949198499999998
+      },
+      "address": "Miodowa 51a, 31-036 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJJ4ngDkBbFkcRaaC0SXi9O2U"
+    },
+    {
+      "name": "Tawerna Wilczy Dół",
+      "rating": 4.8,
+      "reviews": 9158,
+      "operating_hours": {
+        "sunday": "12–10 PM",
+        "monday": "2–11 PM",
+        "tuesday": "2–11 PM",
+        "wednesday": "2–11 PM",
+        "thursday": "2–11 PM",
+        "friday": "1 PM–12 AM",
+        "saturday": "1 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0629123,
+        "longitude": 19.9412298
+      },
+      "address": "Szpitalna 22, 31-024 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJx9oWOatbFkcRVkTWilS_mmU"
+    },
+    {
+      "name": "Omerta",
+      "rating": 4.6,
+      "reviews": 2676,
+      "operating_hours": {
+        "sunday": "4 PM–12 AM",
+        "monday": "4 PM–12 AM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–12 AM",
+        "friday": "4 PM–1 AM",
+        "saturday": "4 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.052189399999996,
+        "longitude": 19.945700199999997
+      },
+      "address": "Kupa 3, 31-057 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJmQgaY2pbFkcRBuM5IisgNv0"
+    },
+    {
+      "name": "BroPub | Craft Beer & Burgers",
+      "rating": 4.5,
+      "reviews": 1919,
+      "operating_hours": {
+        "sunday": "12–11 PM",
+        "monday": "2 PM–12 AM",
+        "tuesday": "2 PM–12 AM",
+        "wednesday": "2 PM–12 AM",
+        "thursday": "2 PM–12 AM",
+        "friday": "2 PM–1 AM",
+        "saturday": "12 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0531753,
+        "longitude": 19.939386
+      },
+      "address": "Stradomska 11, 31-603 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJaQWdgGxbFkcRC2TSmA75Ws4"
+    },
+    {
+      "name": "Pub Polski",
+      "rating": 4.5,
+      "reviews": 1321,
+      "operating_hours": {
+        "sunday": "11 AM–1 AM",
+        "monday": "11 AM–12 AM",
+        "tuesday": "11 AM–12 AM",
+        "wednesday": "11 AM–12 AM",
+        "thursday": "11 AM–12 AM",
+        "friday": "11 AM–1 AM",
+        "saturday": "11 AM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.062401799999996,
+        "longitude": 19.938522799999998
+      },
+      "address": "Rynek Główny 44, 31-017 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJU9RMHA5bFkcRijZUp4SZUws"
+    },
+    {
+      "name": "Oliwa Pub",
+      "rating": 4.6,
+      "reviews": 658,
+      "operating_hours": {
+        "sunday": "3 PM–2 AM",
+        "monday": "3 PM–1 AM",
+        "tuesday": "3 PM–1 AM",
+        "wednesday": "3 PM–1 AM",
+        "thursday": "3 PM–1 AM",
+        "friday": "2 PM–2 AM",
+        "saturday": "2 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0524858,
+        "longitude": 19.9435117
+      },
+      "address": "Miodowa 14, 31-055 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ9_PqqmtbFkcRKgP894Ch5J0"
+    },
+    {
+      "name": "Roof Top Terrace",
+      "rating": 4.3,
+      "reviews": 192,
+      "operating_hours": {
+        "sunday": "12:30 PM–12 AM",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–12 AM",
+        "friday": "4 PM–12 AM",
+        "saturday": "12:30 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0557052,
+        "longitude": 19.931158999999997
+      },
+      "address": "Powiśle 7, 31-101 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJX4Yi7HJbFkcR6Mgjk-AVhVo"
+    },
+    {
+      "name": "Groble Skybar lounge",
+      "rating": 4.5,
+      "reviews": 1841,
+      "operating_hours": {
+        "sunday": "10 AM–11 PM",
+        "monday": "10 AM–11 PM",
+        "tuesday": "10 AM–11 PM",
+        "wednesday": "10 AM–11 PM",
+        "thursday": "10 AM–11 PM",
+        "friday": "10 AM–11 PM",
+        "saturday": "10 AM–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0552225,
+        "longitude": 19.9328039
+      },
+      "address": "plac Na Groblach 22, 31-101 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJv6Zwm3JbFkcRReBaeUGizTE"
+    },
+    {
+      "name": "SIX RoofTop",
+      "rating": 4.4,
+      "reviews": 302,
+      "operating_hours": {
+        "sunday": "2–8 PM",
+        "monday": "2–8 PM",
+        "tuesday": "2–8 PM",
+        "wednesday": "2–8 PM",
+        "thursday": "2–8 PM",
+        "friday": "2 PM–12 AM",
+        "saturday": "2 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0493634,
+        "longitude": 19.937112199999998
+      },
+      "address": "Świętego Stanisława 10, 31-071 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJnSd-AVhbFkcR3tyEia-KOy8"
+    },
+    {
+      "name": "Sky Bar 5.floor",
+      "rating": 4,
+      "reviews": 91,
+      "operating_hours": {
+        "sunday": "12–11 PM",
+        "monday": "12–11 PM",
+        "tuesday": "12–11 PM",
+        "wednesday": "12–11 PM",
+        "thursday": "12–11 PM",
+        "friday": "12–11 PM",
+        "saturday": "12–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0526694,
+        "longitude": 19.948458199999997
+      },
+      "address": "Szeroka 12, 31-053 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJqYvfcRBbFkcRWs--kvqwoI4"
+    },
+    {
+      "name": "Zielone Tarasy",
+      "rating": 4.5,
+      "reviews": 1453,
+      "operating_hours": {
+        "sunday": "12–8 PM",
+        "monday": "10 AM–9 PM",
+        "tuesday": "10 AM–9 PM",
+        "wednesday": "10 AM–9 PM",
+        "thursday": "10 AM–9 PM",
+        "friday": "10 AM–9 PM",
+        "saturday": "12–9 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.073866599999995,
+        "longitude": 19.935181
+      },
+      "address": "Aleja Juliusza Słowackiego 64, 31-000 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ_xQeIgFbFkcRlNPp-OxrtQI"
+    },
+    {
+      "name": "Szał Cafe",
+      "rating": 3.6,
+      "reviews": 887,
+      "gps_coordinates": {
+        "latitude": 50.0617265,
+        "longitude": 19.93761
+      },
+      "address": "Rynek Główny 3, 31-048 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJlZwxBw5bFkcRmaNncw7kZfM"
+    },
+    {
+      "name": "Classic Rock",
+      "rating": 4.8,
+      "reviews": 601,
+      "operating_hours": {
+        "sunday": "5 PM–12 AM",
+        "monday": "5 PM–12 AM",
+        "tuesday": "5 PM–12 AM",
+        "wednesday": "5 PM–1 AM",
+        "thursday": "5 PM–1 AM",
+        "friday": "5 PM–4:30 AM",
+        "saturday": "5 PM–4:30 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.064414899999996,
+        "longitude": 19.9279559
+      },
+      "address": "Rajska 24, 31-124 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ_1sBnIBbFkcRAD2ADTfrK2I"
+    },
+    {
+      "name": "Klub Re",
+      "rating": 4.6,
+      "reviews": 3344,
+      "operating_hours": {
+        "sunday": "12 PM–2 AM",
+        "monday": "12 PM–2 AM",
+        "tuesday": "12 PM–2 AM",
+        "wednesday": "12 PM–2 AM",
+        "thursday": "12 PM–2 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.061043899999994,
+        "longitude": 19.9412308
+      },
+      "address": "Świętego Krzyża 4, 31-027 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJP_qs1BNbFkcRdGc3Jvxcgl4"
+    },
+    {
+      "name": "Karaoke Spot",
+      "rating": 4.7,
+      "reviews": 348,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "5 PM–12 AM",
+        "tuesday": "5 PM–12 AM",
+        "wednesday": "5 PM–12 AM",
+        "thursday": "5 PM–12 AM",
+        "friday": "4 PM–1 AM",
+        "saturday": "4 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0615284,
+        "longitude": 19.9444999
+      },
+      "address": "Westerplatte 13, 31-033 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ5QA3evZbFkcRoXJV35LonRM"
+    },
+    {
+      "name": "Foggy Krakow Shisha Lounge Bar Karaoke & Sushi",
+      "rating": 4.5,
+      "reviews": 1865,
+      "operating_hours": {
+        "sunday": "2 PM–2 AM",
+        "monday": "2 PM–2 AM",
+        "tuesday": "2 PM–2 AM",
+        "wednesday": "2 PM–2 AM",
+        "thursday": "2 PM–2 AM",
+        "friday": "2 PM–4 AM",
+        "saturday": "2 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0646183,
+        "longitude": 19.9395405
+      },
+      "address": "Świętego Jana 30, 30-332 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJEXR-pVRbFkcRU99V7UxGRmM"
+    },
+    {
+      "name": "Shadow Resto & Bar | Kazimierz |",
+      "rating": 4.9,
+      "reviews": 1183,
+      "operating_hours": {
+        "sunday": "9 am–10 pm",
+        "monday": "4–10:30 pm",
+        "tuesday": "4–10:30 pm",
+        "wednesday": "4–10:30 pm",
+        "thursday": "12–11 pm",
+        "friday": "12–11:30 pm",
+        "saturday": "9 am–11:30 pm"
+      },
+      "gps_coordinates": {
+        "latitude": 50.055105499999996,
+        "longitude": 19.946548999999997
+      },
+      "address": "Starowiślna 41, 31-038 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJZ7rVnpdbFkcRZ9rBtZaB-IA"
+    },
+    {
+      "name": "🍸🎵 Domingo Restauracja & Bar",
+      "rating": 4.6,
+      "reviews": 1048,
+      "operating_hours": {
+        "sunday": "8 am–10 pm",
+        "monday": "8 am–10 pm",
+        "tuesday": "8 am–10 pm",
+        "wednesday": "8 am–11 pm",
+        "thursday": "8 am–11 pm",
+        "friday": "8 am–12 am",
+        "saturday": "8 am–12 am"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0590495,
+        "longitude": 19.9386829
+      },
+      "address": "plac Dominikański 4, 31-043 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ6z6-W_FbFkcROsLog0lcAa4"
+    },
+    {
+      "name": "Dynia Resto Bar",
+      "rating": 4.5,
+      "reviews": 3797,
+      "operating_hours": {
+        "sunday": "11 am–10 pm",
+        "monday": "12–10 pm",
+        "tuesday": "12–10 pm",
+        "wednesday": "12–10 pm",
+        "thursday": "12–11 pm",
+        "friday": "12–11 pm",
+        "saturday": "11 am–11 pm"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0633578,
+        "longitude": 19.9291073
+      },
+      "address": "Krupnicza 20, 31-123 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJfffMZglbFkcR1evSvkqd5Os"
+    },
+    {
+      "name": "VELO Food&Bar",
+      "rating": 4.5,
+      "reviews": 1297,
+      "operating_hours": {
+        "sunday": "8 am–10 pm",
+        "monday": "8 am–10 pm",
+        "tuesday": "8 am–10 pm",
+        "wednesday": "8 am–10 pm",
+        "thursday": "8 am–10 pm",
+        "friday": "8 am–11 pm",
+        "saturday": "8 am–11 pm"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0597646,
+        "longitude": 19.928537499999997
+      },
+      "address": "Marszałka Józefa Piłsudskiego 22, 31-109 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJgU5ErSRbFkcRkQM20BB7WeA"
+    },
+    {
+      "name": "Kufle i Widelce",
+      "rating": 4.5,
+      "reviews": 993,
+      "operating_hours": {
+        "sunday": "12–10 pm",
+        "monday": "3–11 pm",
+        "tuesday": "3–11 pm",
+        "wednesday": "3 pm–12 am",
+        "thursday": "3 pm–12 am",
+        "friday": "3 pm–12 am",
+        "saturday": "3 pm–12 am"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0639305,
+        "longitude": 19.9271258
+      },
+      "address": "Czysta 3, 31-121 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJCwhrhAlbFkcRQZL_VHYFTYY"
+    },
+    {
+      "name": "Kolba Resto-Bar | Chemical Restaurant",
+      "rating": 4.8,
+      "reviews": 991,
+      "operating_hours": {
+        "sunday": "3–11 pm",
+        "monday": "Closed",
+        "tuesday": "5–11:30 pm",
+        "wednesday": "5–11:30 pm",
+        "thursday": "5–11:30 pm",
+        "friday": "5 pm–12 am",
+        "saturday": "3 pm–12 am"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0611452,
+        "longitude": 19.9346528
+      },
+      "address": "Wiślna 5/3, 31-007 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJKyvYb-1bFkcREHScJhhYGkI"
+    },
+    {
+      "name": "Smakuś Gastro DK",
+      "rating": 4.1,
+      "reviews": 431,
+      "operating_hours": {
+        "sunday": "9 am–5 pm",
+        "monday": "9 am–6 pm",
+        "tuesday": "9 am–6 pm",
+        "wednesday": "9 am–6 pm",
+        "thursday": "9 am–6 pm",
+        "friday": "9 am–6 pm",
+        "saturday": "9 am–5 pm"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0752454,
+        "longitude": 19.926188399999997
+      },
+      "address": "Mazowiecka 41, 30-019 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJDfANwqtbFkcRaMTOSJ1PAl0"
+    },
+    {
+      "name": "Filo | Greek bistro",
+      "rating": 4.7,
+      "reviews": 1178,
+      "operating_hours": {
+        "sunday": "1–10 pm",
+        "monday": "Closed",
+        "tuesday": "3–10 pm",
+        "wednesday": "3–10 pm",
+        "thursday": "3–10 pm",
+        "friday": "3–11 pm",
+        "saturday": "1–11 pm"
+      },
+      "gps_coordinates": {
+        "latitude": 50.062098,
+        "longitude": 19.942641899999998
+      },
+      "address": "Św. Tomasza 30, 31-027 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJB1QaS_pbFkcRb9VOeY_jUWg"
+    },
+    {
+      "name": "Skwer Bar",
+      "rating": 4.8,
+      "reviews": 396,
+      "operating_hours": {
+        "sunday": "12 pm–2 am",
+        "monday": "3 pm–2 am",
+        "tuesday": "3 pm–2 am",
+        "wednesday": "3 pm–2 am",
+        "thursday": "3 pm–3 am",
+        "friday": "12 pm–5 am",
+        "saturday": "12 pm–5 am"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0525186,
+        "longitude": 19.944706
+      },
+      "address": "Estery 1, 31-056 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJdzuJZ7JbFkcRC2avTirAvK4"
+    },
+    {
+      "name": "Pierwszy Lokal na Stolarskiej po lewej stronie, idąc od Małego Rynku",
+      "rating": 4.6,
+      "reviews": 1573,
+      "operating_hours": {
+        "sunday": "9 am–2 am",
+        "monday": "8:30 am–2 am",
+        "tuesday": "8:30 am–2 am",
+        "wednesday": "8:30 am–2 am",
+        "thursday": "8:30 am–3 am",
+        "friday": "8:30 am–3 am",
+        "saturday": "9 am–3 am"
+      },
+      "gps_coordinates": {
+        "latitude": 50.060716199999995,
+        "longitude": 19.939652799999998
+      },
+      "address": "Stolarska 6, 31-043 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJNeIDPhJbFkcRZ5OZSMb4dLA"
+    },
+    {
+      "name": "Duffy's Irish Bar",
+      "rating": 4.6,
+      "reviews": 1624,
+      "operating_hours": {
+        "sunday": "12–11:30 PM",
+        "monday": "12 PM–12:30 AM",
+        "tuesday": "12 PM–12:30 AM",
+        "wednesday": "12 PM–12:30 AM",
+        "thursday": "12 PM–12:30 AM",
+        "friday": "12 PM–1 AM",
+        "saturday": "12 PM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.050373799999996,
+        "longitude": 19.9488813
+      },
+      "address": "Św. Wawrzyńca 18, 31-060 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJf0UYvUFbFkcR4eJIQrpN7hQ"
+    },
+    {
+      "name": "Bulldog",
+      "rating": 3.8,
+      "reviews": 2989,
+      "operating_hours": {
+        "sunday": "9 AM–4 AM",
+        "monday": "9 AM–3 AM",
+        "tuesday": "9 AM–3 AM",
+        "wednesday": "9 AM–3 AM",
+        "thursday": "9 AM–4 AM",
+        "friday": "9 AM–4 AM",
+        "saturday": "9 AM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0619878,
+        "longitude": 19.9397256
+      },
+      "address": "plac Mariacki 1/4, 31-042 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJzaA37hFbFkcRxJIWj6Pk0Eg"
+    },
+    {
+      "name": "442 Sport Pub",
+      "rating": 4.6,
+      "reviews": 818,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "2 PM–12 AM",
+        "tuesday": "2 PM–12 AM",
+        "wednesday": "2 PM–12 AM",
+        "thursday": "2 PM–12 AM",
+        "friday": "2 PM–12 AM",
+        "saturday": "12 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0627344,
+        "longitude": 19.9404896
+      },
+      "address": "Św. Tomasza 20, 31-020 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJ5TDr1blbFkcRfNEKtBbdO7Y"
+    },
+    {
+      "name": "Diament | Billiard Club",
+      "rating": 4.6,
+      "reviews": 2218,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0605896,
+        "longitude": 19.944734
+      },
+      "address": "Mikołaja Zyblikiewicza 2, 31-029 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJL5ACWBFbFkcR8yMAKa8QHb0"
+    },
+    {
+      "name": "The Stage | Music - Billiard - Food",
+      "rating": 4.5,
+      "reviews": 1413,
+      "operating_hours": {
+        "sunday": "12 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–12 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0663899,
+        "longitude": 19.9344411
+      },
+      "address": "Łobzowska 3, 31-139 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJhb8zSQ9bFkcRAMXilk-hkz4"
+    },
+    {
+      "name": "PROMINENT The Original Lounge Bar | PROMINENT Pizza",
+      "rating": 4.3,
+      "reviews": 1964,
+      "operating_hours": {
+        "sunday": "4 PM–12 AM",
+        "monday": "12 PM–12 AM",
+        "tuesday": "12 PM–12 AM",
+        "wednesday": "12 PM–12 AM",
+        "thursday": "12 PM–2 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "4 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0752525,
+        "longitude": 19.9409675
+      },
+      "address": "Hala sportowo-widowiskowa Politechniki Krakowskiej, Kamienna 17, 31-403 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJn7kHJwJbFkcRJINcVOHZymY"
+    },
+    {
+      "name": "Bar Smok Kraków",
+      "rating": 4.5,
+      "reviews": 85,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "Closed",
+        "tuesday": "6 PM–12 AM",
+        "wednesday": "6 PM–12 AM",
+        "thursday": "6 PM–12 AM",
+        "friday": "6 PM–12 AM",
+        "saturday": "6 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0654263,
+        "longitude": 19.9453636
+      },
+      "address": "Pawia 3, 31-154 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJmeuhGZlbFkcRP9g38SRT4vs"
+    },
+    {
+      "name": "Smak",
+      "rating": 4.6,
+      "reviews": 2682,
+      "operating_hours": {
+        "sunday": "11 AM–9 PM",
+        "monday": "11 AM–9 PM",
+        "tuesday": "11 AM–9 PM",
+        "wednesday": "11 AM–9 PM",
+        "thursday": "11 AM–9 PM",
+        "friday": "11 AM–10 PM",
+        "saturday": "11 AM–10 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0640368,
+        "longitude": 19.932166799999997
+      },
+      "address": "Karmelicka 10, 33-128 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJJRfsyg5bFkcR_q19Gp-hRWg"
+    },
+    {
+      "name": "Jutrzenka",
+      "rating": 4.5,
+      "reviews": 529,
+      "operating_hours": {
+        "sunday": "7 AM–3 PM",
+        "monday": "7 AM–6 PM",
+        "tuesday": "7 AM–6 PM",
+        "wednesday": "7 AM–6 PM",
+        "thursday": "7 AM–6 PM",
+        "friday": "7 AM–6 PM",
+        "saturday": "7 AM–4 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0583349,
+        "longitude": 19.966905099999998
+      },
+      "address": "Stefana Bobrowskiego 6, 31-552 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJB9OsejpbFkcRU9B1JXmnY-c"
+    },
+    {
+      "name": "Bar mleczny \"Pod Temidą\"",
+      "rating": 4.1,
+      "reviews": 4335,
+      "operating_hours": {
+        "sunday": "9 AM–8 PM",
+        "monday": "9 AM–8 PM",
+        "tuesday": "9 AM–8 PM",
+        "wednesday": "9 AM–8 PM",
+        "thursday": "9 AM–8 PM",
+        "friday": "9 AM–8 PM",
+        "saturday": "9 AM–8 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0577852,
+        "longitude": 19.937946099999998
+      },
+      "address": "Grodzka 43, 31-001 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJm76ksXhbFkcReinGh-fkyjk"
+    },
+    {
+      "name": "Bar Pod Kopytkiem",
+      "rating": 4.5,
+      "reviews": 841,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "11 AM–5 PM",
+        "tuesday": "11 AM–5 PM",
+        "wednesday": "11 AM–5 PM",
+        "thursday": "11 AM–5 PM",
+        "friday": "11 AM–5 PM",
+        "saturday": "Closed"
+      },
+      "gps_coordinates": {
+        "latitude": 50.061609,
+        "longitude": 19.927766899999998
+      },
+      "address": "plac Generała Władysława Sikorskiego 1, 31-115 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJyRJKvAtbFkcRmGeTmBkN8dM"
+    },
+    {
+      "name": "Wydział Smaku",
+      "rating": 4.9,
+      "reviews": 573,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8–10 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0604756,
+        "longitude": 19.921265299999998
+      },
+      "address": "Oleandry 1, 30-060 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJ8yrB91VbFkcRtGOiSj2i0PE"
+    },
+    {
+      "name": "Polibuda Pub",
+      "rating": 4.5,
+      "reviews": 1047,
+      "operating_hours": {
+        "sunday": "10 AM–12 AM",
+        "monday": "9 AM–12 AM",
+        "tuesday": "9 AM–12 AM",
+        "wednesday": "9 AM–12 AM",
+        "thursday": "9 AM–1 AM",
+        "friday": "9 AM–1 AM",
+        "saturday": "9 AM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0696612,
+        "longitude": 19.9438825
+      },
+      "address": "Warszawska 17, 31-155 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJUR6KtQRbFkcRfvjtQUT_egk"
+    },
+    {
+      "name": "Smakosz",
+      "rating": 4.1,
+      "reviews": 807,
+      "operating_hours": {
+        "sunday": "9 AM–4 PM",
+        "monday": "8 AM–6 PM",
+        "tuesday": "8 AM–6 PM",
+        "wednesday": "8 AM–6 PM",
+        "thursday": "8 AM–6 PM",
+        "friday": "8 AM–6 PM",
+        "saturday": "9 AM–4 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0668285,
+        "longitude": 19.966314999999998
+      },
+      "address": "Mogilska 58, 31-545 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJOwer-CNbFkcRzY_274GNUeA"
+    },
+    {
+      "name": "Lunch Bar TU",
+      "rating": 4.3,
+      "reviews": 1186,
+      "operating_hours": {
+        "sunday": "11 AM–5 PM",
+        "monday": "10 AM–6 PM",
+        "tuesday": "10 AM–6 PM",
+        "wednesday": "10 AM–6 PM",
+        "thursday": "10 AM–6 PM",
+        "friday": "10 AM–6 PM",
+        "saturday": "11 AM–5 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.066963799999996,
+        "longitude": 19.9518645
+      },
+      "address": "Rakowicka 10, 31-511 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJxS_GnxlbFkcRE-NTI6zGAiY"
+    },
+    {
+      "name": "Ulica Krokodyli Pub & Cafe",
+      "rating": 4.5,
+      "reviews": 2267,
+      "operating_hours": {
+        "sunday": "9 AM–1 AM",
+        "monday": "9 AM–1 AM",
+        "tuesday": "9 AM–1 AM",
+        "wednesday": "9 AM–1 AM",
+        "thursday": "9 AM–1 AM",
+        "friday": "9 AM–3 AM",
+        "saturday": "9 AM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.051921,
+        "longitude": 19.9480969
+      },
+      "address": "Szeroka 30, 31-053 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJtx92LUBbFkcRFEfNyoUQUxE"
+    },
+    {
+      "name": "Hype Park",
+      "rating": 4.3,
+      "reviews": 693,
+      "gps_coordinates": {
+        "latitude": 50.0775904,
+        "longitude": 19.944333
+      },
+      "address": "Kamienna 10, 31-403 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJz233POpbFkcRUmocc6MDAMg"
+    },
+    {
+      "name": "Butterfly(Pussy Cat)",
+      "rating": 4.4,
+      "reviews": 42,
+      "gps_coordinates": {
+        "latitude": 50.076794199999995,
+        "longitude": 19.9622106
+      },
+      "address": "Stefana Otwinowskiego 6, 31-432 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJwdP4I-lbFkcRVzvHzXvn1rs"
+    },
+    {
+      "name": "Lastriko",
+      "rating": 4.4,
+      "reviews": 1881,
+      "operating_hours": {
+        "sunday": "9 AM–9 PM",
+        "monday": "9 AM–3 PM",
+        "tuesday": "9 AM–10 PM",
+        "wednesday": "9 AM–10 PM",
+        "thursday": "9 AM–10 PM",
+        "friday": "9 AM–2 AM",
+        "saturday": "9 AM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0603584,
+        "longitude": 19.9353648
+      },
+      "address": "Gołębia 6, 31-007 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJw_CdmQlbFkcRj4C3-gyiaZ0"
+    },
+    {
+      "name": "Sweet&Sour Cafe Bar",
+      "rating": 4.6,
+      "reviews": 756,
+      "operating_hours": {
+        "sunday": "9:30 AM–9 PM",
+        "monday": "9:30 AM–9 PM",
+        "tuesday": "9:30 AM–10 PM",
+        "wednesday": "9:30 AM–10 PM",
+        "thursday": "9:30 AM–10 PM",
+        "friday": "9:30 AM–12 AM",
+        "saturday": "9:30 AM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0633257,
+        "longitude": 19.9358753
+      },
+      "address": "plac Szczepański 9, 31-011 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJCbuJpFlbFkcRhEVHRecU7KY"
+    },
+    {
+      "name": "Winoteka Krakowska",
+      "rating": 4.9,
+      "reviews": 150,
+      "operating_hours": {
+        "sunday": "12–7 PM",
+        "monday": "12–10 PM",
+        "tuesday": "4–10 PM",
+        "wednesday": "4–10 PM",
+        "thursday": "4–10 PM",
+        "friday": "12–11 PM",
+        "saturday": "12–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0585302,
+        "longitude": 19.9205665
+      },
+      "address": "Józefa Kałuży 1, 30-111 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJI3EoVcFbFkcR6iGFR3CZKj4"
+    },
+    {
+      "name": "Strefa Piwa Sklep",
+      "rating": 4.8,
+      "reviews": 313,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "1–8 PM",
+        "tuesday": "1–8 PM",
+        "wednesday": "1–8 PM",
+        "thursday": "1–8 PM",
+        "friday": "1–8 PM",
+        "saturday": "11 AM–8 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0720737,
+        "longitude": 19.959284
+      },
+      "address": "Aleja Pułkownika Władysława Beliny-Prażmowskiego 49A, 31-514 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ09SGuR9bFkcRD7kdh9tZfJs"
+    },
+    {
+      "name": "Bosacka Station",
+      "rating": 4.8,
+      "reviews": 328,
+      "operating_hours": {
+        "sunday": "11 AM–10 PM",
+        "monday": "11 AM–10 PM",
+        "tuesday": "11 AM–10 PM",
+        "wednesday": "11 AM–10 PM",
+        "thursday": "11 AM–10 PM",
+        "friday": "11 AM–10 PM",
+        "saturday": "11 AM–10 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0674207,
+        "longitude": 19.9501188
+      },
+      "address": "Bosacka 5/1a, 31-508 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJs0XS59tbFkcRlW-L1mfW3EY"
+    },
+    {
+      "name": "inQse Krakow | Brewery Residence",
+      "rating": 4.7,
+      "reviews": 466,
+      "gps_coordinates": {
+        "latitude": 50.0638727,
+        "longitude": 19.950000499999998
+      },
+      "address": "Lubicz 17c, 31-503 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJISIE_hlbFkcR89tUIu3T9Q0"
+    },
+    {
+      "name": "Cosmic Minigolf Pub",
+      "rating": 4.7,
+      "reviews": 3234,
+      "operating_hours": {
+        "sunday": "12 PM–1 AM",
+        "monday": "2 PM–1 AM",
+        "tuesday": "2 PM–1 AM",
+        "wednesday": "2 PM–1 AM",
+        "thursday": "2 PM–1 AM",
+        "friday": "12 PM–2 AM",
+        "saturday": "12 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.067164899999995,
+        "longitude": 19.928389
+      },
+      "address": "Karmelicka 50, 31-128 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJVZ5iLfRbFkcR9iOLwlWGQZM"
+    },
+    {
+      "name": "Vistula River Roof Terrace",
+      "rating": 4.8,
+      "reviews": 17,
+      "gps_coordinates": {
+        "latitude": 50.0468263,
+        "longitude": 19.951364299999998
+      },
+      "address": "Nadwiślańska 11, 30-527 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ8xEQikNbFkcRZRs0vrYEUSA"
+    },
+    {
+      "name": "Loża",
+      "rating": 4.1,
+      "reviews": 3672,
+      "operating_hours": {
+        "sunday": "8 AM–12 AM",
+        "monday": "8 AM–12 AM",
+        "tuesday": "8 AM–12 AM",
+        "wednesday": "8 AM–12 AM",
+        "thursday": "8 AM–12 AM",
+        "friday": "8 AM–12 AM",
+        "saturday": "8 AM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0625339,
+        "longitude": 19.9379354
+      },
+      "address": "Rynek Główny 41, 31-013 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJq6GNGQ5bFkcRKAq0UCIDdVs"
+    },
+    {
+      "name": "Buda",
+      "rating": 4.6,
+      "reviews": 313,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "8 PM–1 AM",
+        "thursday": "Closed",
+        "friday": "Closed",
+        "saturday": "7–11:29 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0608715,
+        "longitude": 19.9301645
+      },
+      "address": "Czapskich 2, 31-110 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJXdjncAxbFkcRRGTGeW1Rhjc"
+    },
+    {
+      "name": "Schizofrenia Café",
+      "rating": 4.7,
+      "reviews": 1180,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "Closed",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–12 AM",
+        "friday": "4 PM–1 AM",
+        "saturday": "4 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0665717,
+        "longitude": 19.955696
+      },
+      "address": "Topolowa 42, 31-506 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJO6CNDWtbFkcRC5rEWwVvD6I"
+    },
+    {
+      "name": "Eagle Shisha Bar",
+      "rating": 4.8,
+      "reviews": 752,
+      "operating_hours": {
+        "sunday": "3 PM–1:30 AM",
+        "monday": "3 PM–1:30 AM",
+        "tuesday": "3 PM–1:30 AM",
+        "wednesday": "3 PM–1:30 AM",
+        "thursday": "3 PM–1:30 AM",
+        "friday": "3 PM–2:30 AM",
+        "saturday": "3 PM–2:30 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0664729,
+        "longitude": 19.929198
+      },
+      "address": "Karmelicka 40, 31-128 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJURAY0aJbFkcRZfYBLEJtt-I"
+    },
+    {
+      "name": "Cyrano de Bergerac - Restauracja Kraków",
+      "rating": 4.7,
+      "reviews": 1079,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "12–10 PM",
+        "tuesday": "12–10 PM",
+        "wednesday": "12–10 PM",
+        "thursday": "12–10 PM",
+        "friday": "12–10 PM",
+        "saturday": "12–10 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.065,
+        "longitude": 19.9383333
+      },
+      "address": "Sławkowska 26, 31-014 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJrSH_uA9bFkcRa1QoV9f9lHk"
+    },
+    {
+      "name": "Żaczek - Bar Mleczny",
+      "rating": 4.3,
+      "reviews": 1417,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed"
+      },
+      "gps_coordinates": {
+        "latitude": 50.067811,
+        "longitude": 19.9175579
+      },
+      "address": "Czarnowiejska 75, 30-049 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJTfeCMqRbFkcRG5EebAxLjPw"
+    },
+    {
+      "name": "Jadłodajnia \"Smak\"",
+      "rating": 4.7,
+      "reviews": 266,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0775759,
+        "longitude": 19.926368
+      },
+      "address": "Wrocławska 37, 30-011 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJrfulg6xbFkcROPeLNA6l3YM"
+    },
+    {
+      "name": "RIS-BAR",
+      "rating": 4.6,
+      "reviews": 129,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "11:30 AM–3:30 PM",
+        "tuesday": "11:30 AM–3:30 PM",
+        "wednesday": "11:30 AM–3:30 PM",
+        "thursday": "11:30 AM–3:30 PM",
+        "friday": "11:30 AM–3:30 PM",
+        "saturday": "11:30 AM–2:30 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.064951,
+        "longitude": 19.9180673
+      },
+      "address": "Władysława Reymonta 11, 33-332 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJn9UOS6FbFkcRUi8PKd8-o9I"
+    },
+    {
+      "name": "Bar Labirynt",
+      "rating": 4.8,
+      "reviews": 23,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "7:30 AM–4 PM",
+        "tuesday": "7:30 AM–4 PM",
+        "wednesday": "7:30 AM–4 PM",
+        "thursday": "7:30 AM–4 PM",
+        "friday": "7 AM–3 PM",
+        "saturday": "7 AM–3 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0659272,
+        "longitude": 19.9192723
+      },
+      "address": "al. Adama Mickiewicza 30 AGH, pawilon B-1 (niski parter, 30-059 Kraków Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, 30-059 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJoZta_0lbFkcRHvxdTlxWzew"
+    },
+    {
+      "name": "Eszeweria",
+      "rating": 4.7,
+      "reviews": 2879,
+      "operating_hours": {
+        "sunday": "10 AM–2 AM",
+        "monday": "11 AM–1 AM",
+        "tuesday": "11 AM–1 AM",
+        "wednesday": "11 AM–1 AM",
+        "thursday": "11 AM–2 AM",
+        "friday": "11 AM–3 AM",
+        "saturday": "10 AM–3 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0505691,
+        "longitude": 19.944571099999997
+      },
+      "address": "Józefa 9, 31-056 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJM0mJW31bFkcR5qV206XM8v8"
+    },
+    {
+      "name": "Wódka Café Bar",
+      "rating": 4.8,
+      "reviews": 430,
+      "operating_hours": {
+        "sunday": "1 PM–1 AM",
+        "monday": "2 PM–1 AM",
+        "tuesday": "2 PM–1 AM",
+        "wednesday": "2 PM–1 AM",
+        "thursday": "2 PM–1 AM",
+        "friday": "1 PM–1 AM",
+        "saturday": "1 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.051230499999996,
+        "longitude": 19.9438735
+      },
+      "address": "Beera Meiselsa 15, 31-058 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJDXDGhEtbFkcRVCQ0eSppJs0"
+    },
+    {
+      "name": "BAR Kraków – kuchnia azjatycka & koktajle",
+      "rating": 4.6,
+      "reviews": 449,
+      "operating_hours": {
+        "sunday": "1–9 PM",
+        "monday": "1–9 PM",
+        "tuesday": "1–9 PM",
+        "wednesday": "1–9 PM",
+        "thursday": "1–9 PM",
+        "friday": "1–10 PM",
+        "saturday": "1–10 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.050612,
+        "longitude": 19.9407668
+      },
+      "address": "Augustiańska 1, 33-332 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJebuOxR5bFkcRFm2HjC8aTS0"
+    },
+    {
+      "name": "ZOO Klub",
+      "rating": 4.4,
+      "reviews": 536,
+      "operating_hours": {
+        "sunday": "7 PM–3 AM",
+        "monday": "7 PM–3 AM",
+        "tuesday": "7 PM–3 AM",
+        "wednesday": "7 PM–3 AM",
+        "thursday": "7 PM–3 AM",
+        "friday": "7 PM–5 AM",
+        "saturday": "7 PM–5 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.050536799999996,
+        "longitude": 19.9433701
+      },
+      "address": "Józefa 6/1 P, 31-056 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJBX1glNZbFkcRWp9Sf0NBxI0"
+    },
+    {
+      "name": "Baza Klub",
+      "rating": 4.7,
+      "reviews": 102,
+      "operating_hours": {
+        "sunday": "6 PM–2 AM",
+        "monday": "4 PM–2 AM",
+        "tuesday": "4 PM–2 AM",
+        "wednesday": "4 PM–2 AM",
+        "thursday": "4 PM–2 AM",
+        "friday": "4 PM–5 AM",
+        "saturday": "4 PM–5 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0483556,
+        "longitude": 19.9453768
+      },
+      "address": "Mostowa 2, 31-061 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJceQztH5bFkcR016ieSrvpcM"
+    },
+    {
+      "name": "Nova Klubova",
+      "rating": 4.5,
+      "reviews": 520,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "Closed",
+        "tuesday": "Closed",
+        "wednesday": "Closed",
+        "thursday": "Closed",
+        "friday": "9 PM–4 AM",
+        "saturday": "9 PM–4 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0514957,
+        "longitude": 19.9457163
+      },
+      "address": "Estery 18, 31-056 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJg5MInX9bFkcRmNRqUK-b_LM"
+    },
+    {
+      "name": "Empire Of Cocktails",
+      "rating": 5,
+      "reviews": 443,
+      "operating_hours": {
+        "sunday": "5 PM–12 AM",
+        "monday": "6 PM–12 AM",
+        "tuesday": "6 PM–12 AM",
+        "wednesday": "6 PM–12 AM",
+        "thursday": "6 PM–12 AM",
+        "friday": "6 PM–2 AM",
+        "saturday": "5 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.051775,
+        "longitude": 19.943120999999998
+      },
+      "address": "Bożego Ciała 5, 31-059 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJk04MWBJbFkcRQeD9fIXQoSs"
+    },
+    {
+      "name": "Gin Mill",
+      "rating": 5,
+      "reviews": 582,
+      "operating_hours": {
+        "sunday": "6 PM–12 AM",
+        "monday": "Closed",
+        "tuesday": "6 PM–12 AM",
+        "wednesday": "6 PM–12 AM",
+        "thursday": "6 PM–12 AM",
+        "friday": "6 PM–2 AM",
+        "saturday": "6 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.052199099999996,
+        "longitude": 19.9425925
+      },
+      "address": "Józefa Dietla 49, 31-054 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJh9rmOR5bFkcRNqqaE9gdX6I"
+    },
+    {
+      "name": "Szklanki",
+      "rating": 4.7,
+      "reviews": 1277,
+      "operating_hours": {
+        "sunday": "1 PM–12 AM",
+        "monday": "4–11 PM",
+        "tuesday": "4 PM–12 AM",
+        "wednesday": "4 PM–12 AM",
+        "thursday": "4 PM–1 AM",
+        "friday": "4 PM–2 AM",
+        "saturday": "1 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0518806,
+        "longitude": 19.946548699999997
+      },
+      "address": "Jakuba 19, 31-057 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJaRxZ8mxbFkcRRBGXljy8sUs"
+    },
+    {
+      "name": "Nat Bistro",
+      "rating": 4.9,
+      "reviews": 309,
+      "operating_hours": {
+        "sunday": "2–10 PM",
+        "monday": "5–11 PM",
+        "tuesday": "Closed",
+        "wednesday": "5–11 PM",
+        "thursday": "5–11 PM",
+        "friday": "5–10 PM",
+        "saturday": "2–11 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0493017,
+        "longitude": 19.9432407
+      },
+      "address": "Krakowska 34, 31-062 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJR4mO97pbFkcR8FAaHdF9Ios"
+    },
+    {
+      "name": "Wino i Miód Winiarnia i Sklep",
+      "rating": 4.9,
+      "reviews": 68,
+      "operating_hours": {
+        "sunday": "Closed",
+        "monday": "2–10 PM",
+        "tuesday": "2–10 PM",
+        "wednesday": "2–10 PM",
+        "thursday": "2–10 PM",
+        "friday": "2–10 PM",
+        "saturday": "10 AM–10 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0515931,
+        "longitude": 19.9273515
+      },
+      "address": "Rynek Dębnicki 13, 30-319 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJHVnCmHFbFkcRbWQWyZpKMKM"
+    },
+    {
+      "name": "Stara Zajezdnia Kraków by DeSilva",
+      "rating": 4.5,
+      "reviews": 6030,
+      "operating_hours": {
+        "sunday": "12–10 PM",
+        "monday": "5–10 PM",
+        "tuesday": "5–10 PM",
+        "wednesday": "5–10 PM",
+        "thursday": "4–11 PM",
+        "friday": "3 PM–12 AM",
+        "saturday": "12 PM–12 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0501198,
+        "longitude": 19.947116299999998
+      },
+      "address": "Św. Wawrzyńca 12, 31-060 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJ6TAc70FbFkcRJT7xBU4VhZo"
+    },
+    {
+      "name": "The Trust",
+      "rating": 4.9,
+      "reviews": 1186,
+      "operating_hours": {
+        "sunday": "12–11 PM",
+        "monday": "Closed",
+        "tuesday": "5–11 PM",
+        "wednesday": "5 PM–12 AM",
+        "thursday": "5 PM–12 AM",
+        "friday": "12 PM–1 AM",
+        "saturday": "12 PM–1 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.048798899999994,
+        "longitude": 19.9423289
+      },
+      "address": "Węgłowa 3, 31-064 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJfQo_Lb5bFkcRaQkLeeIqSOM"
+    },
+    {
+      "name": "Galileo Lounge Bar, Shisha Lounge & Cocktail bar",
+      "rating": 4.9,
+      "reviews": 353,
+      "operating_hours": {
+        "sunday": "6 PM–12 AM",
+        "monday": "6 PM–1 AM",
+        "tuesday": "6 PM–1 AM",
+        "wednesday": "6 PM–1 AM",
+        "thursday": "6 PM–1 AM",
+        "friday": "6 PM–2 AM",
+        "saturday": "6 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.051212,
+        "longitude": 19.9421036
+      },
+      "address": "Krakowska 5/3U, 31-062 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJl5pp4WhbFkcRCVipGIrBiSY"
+    },
+    {
+      "name": "Chałka Resto Bar",
+      "rating": 4.7,
+      "reviews": 1069,
+      "operating_hours": {
+        "sunday": "9 AM–6 PM",
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "9 AM–6 PM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.050647899999994,
+        "longitude": 19.941812799999997
+      },
+      "address": "Beera Meiselsa 8, 31-063 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJqTn8quFbFkcRSc0bXGrpGrY"
+    },
+    {
+      "name": "Fog House Pub & Grill",
+      "rating": 4.3,
+      "reviews": 886,
+      "gps_coordinates": {
+        "latitude": 50.0522354,
+        "longitude": 19.9382007
+      },
+      "address": "Koletek 11, 31-069 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJBQtQDWxbFkcReUSwnhkIHjU"
+    },
+    {
+      "name": "Targowy",
+      "rating": 4.2,
+      "reviews": 1631,
+      "operating_hours": {
+        "sunday": "9 a.m.–4 p.m.",
+        "monday": "8 a.m.–6 p.m.",
+        "tuesday": "8 a.m.–6 p.m.",
+        "wednesday": "8 a.m.–6 p.m.",
+        "thursday": "8 a.m.–6 p.m.",
+        "friday": "8 a.m.–6 p.m.",
+        "saturday": "9 a.m.–4 p.m."
+      },
+      "gps_coordinates": {
+        "latitude": 50.0571225,
+        "longitude": 19.9516748
+      },
+      "address": "aleja Ignacego Daszyńskiego 19, 31-537 Kraków, Poland",
+      "category": "pub",
+      "place_id": "ChIJszv_Lz5bFkcRWhmpxuUOw98"
+    },
+    {
+      "name": "Piękny Pies",
+      "rating": 4.2,
+      "reviews": 491,
+      "operating_hours": {
+        "sunday": "2 PM–2 AM",
+        "monday": "5 PM–2 AM",
+        "tuesday": "4 PM–2 AM",
+        "wednesday": "4 PM–2 AM",
+        "thursday": "3 PM–2 AM",
+        "friday": "3 PM–5 AM",
+        "saturday": "2 PM–5 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0488632,
+        "longitude": 19.944799
+      },
+      "address": "plac Wolnica 9, 31-060 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJH_DXS2pbFkcRTAA_0bYZXbQ"
+    },
+    {
+      "name": "Sekta Selekta",
+      "rating": 4.4,
+      "reviews": 326,
+      "operating_hours": {
+        "sunday": "7 PM–3 AM",
+        "monday": "Closed",
+        "tuesday": "7 PM–3 AM",
+        "wednesday": "7 PM–3 AM",
+        "thursday": "5 PM–4 AM",
+        "friday": "5 PM–5 AM",
+        "saturday": "5 PM–6 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0511864,
+        "longitude": 19.9448167
+      },
+      "address": "Nowa 3/3, 31-056 Kraków, Poland",
+      "category": "klub_nocny",
+      "place_id": "ChIJCx0urjhbFkcRUhBXN9Wz6Cc"
+    },
+    {
+      "name": "Utopia Bar",
+      "rating": 4.7,
+      "reviews": 176,
+      "operating_hours": {
+        "sunday": "2–10 PM",
+        "monday": "Closed",
+        "tuesday": "2–11 PM",
+        "wednesday": "2–11 PM",
+        "thursday": "2–11 PM",
+        "friday": "2 PM–2 AM",
+        "saturday": "2 PM–2 AM"
+      },
+      "gps_coordinates": {
+        "latitude": 50.0625217,
+        "longitude": 19.9734315
+      },
+      "address": "Fabryczna 13, 31-553 Kraków, Poland",
+      "category": "bar",
+      "place_id": "ChIJW_EJ3stbFkcRYFUTiaK7dEA"
+    }
+  ],
+  "last_updated": "2025-11-23",
+  "meta": {
+    "queries": [
+      "bar Kraków",
+      "pub Kraków",
+      "klub nocny Kraków",
+      "cocktail bar Kraków",
+      "shot bar Kraków",
+      "wine bar Kraków",
+      "craft beer Kraków",
+      "taproom Kraków",
+      "brewpub Kraków",
+      "rooftop bar Kraków",
+      "bar z muzyką na żywo Kraków",
+      "live music bar Kraków",
+      "bar z DJ Kraków",
+      "karaoke bar Kraków",
+      "cocktail lounge Kraków",
+      "gastro bar Kraków",
+      "bar z tapas Kraków",
+      "after hours bar Kraków",
+      "24h bar Kraków",
+      "irish pub Kraków",
+      "sports bar Kraków",
+      "bar studencki Kraków",
+      "local pub Kraków",
+      "club Kraków",
+      "late night club Kraków",
+      "dance club Kraków",
+      "electronic club Kraków"
+    ],
+    "grid": [
+      "@50.0647,19.9450,15z",
+      "@50.0705,19.9400,15z",
+      "@50.0590,19.9400,15z",
+      "@50.0647,19.9550,15z",
+      "@50.0647,19.9350,15z"
+    ],
+    "generated_at": "2025-11-23T22:13:43.218Z"
+  }
+}
