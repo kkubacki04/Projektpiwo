@@ -11,65 +11,56 @@ import FavMusic from './pages/FavMusic';
 
 export default function App() {
   const [user, setUser] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const [profileChecked, setProfileChecked] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const checkProfileCompletion = async (currentUser) => {
-    if (!currentUser) return;
-
-    try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('first_name')
-        .eq('id', currentUser.id)
-        .single();
-
-      if (!data || !data.first_name) {
-        if (location.pathname !== '/profile') {
-          navigate('/profile');
-        }
-      }
-      setProfileChecked(true);
-    } catch (err) {
-      console.error('Błąd sprawdzania profilu:', err);
-    }
-  };
-
   useEffect(() => {
-    let mounted = true;
-
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!mounted) return;
-      const currentUser = session?.user ?? null;
-      setUser(currentUser);
-      if (currentUser) checkProfileCompletion(currentUser);
+      setUser(session?.user ?? null);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!mounted) return;
-      const currentUser = session?.user ?? null;
-      setUser(currentUser);
-      
-      if (currentUser) {
-        checkProfileCompletion(currentUser);
-      }
+      setUser(session?.user ?? null);
     });
 
     return () => {
-      mounted = false;
       subscription.unsubscribe();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname]);
+  }, []);
+
+  useEffect(() => {
+    const checkProfile = async () => {
+      if (!user) return;
+      if (location.pathname === '/profile') return;
+
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('first_name')
+          .eq('id', user.id)
+          .single();
+
+        if (!data || !data.first_name) {
+          navigate('/profile');
+        }
+      } catch (err) {
+        if (err.code !== 'PGRST116') {
+          console.error(err);
+        } else {
+           navigate('/profile');
+        }
+      }
+    };
+
+    checkProfile();
+  }, [user, location.pathname, navigate]);
 
   const handleLogout = async () => {
     setUser(null);
     try {
       await supabase.auth.signOut();
     } catch (err) {
-      console.error('Błąd wylogowania (Supabase):', err);
+      console.error(err);
     }
     navigate('/');
   };
