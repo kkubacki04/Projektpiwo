@@ -46,6 +46,7 @@ export default function FavMusic({ user }) {
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(null);
   const spotifyRef = useRef(null);
+  const ignoreEffect = useRef(false);
 
   const audioRef = useRef(null);
   const [playingTrackId, setPlayingTrackId] = useState(null);
@@ -54,78 +55,80 @@ export default function FavMusic({ user }) {
   useEffect(() => {
     const stored = sessionStorage.getItem(KEY_TOKEN);
     if (stored) {
-      const tokenData = JSON.parse(stored);
-      if (tokenData?.access_token) {
-        initSpotifyClient(tokenData.access_token);
-        setConnected(true);
-        if (tokenExpired(tokenData)) {
-          if (tokenData.refresh_token) {
-            refreshToken(tokenData.refresh_token).then(newToken => {
-              if (newToken?.access_token) {
-                saveToken(newToken);
-                initSpotifyClient(newToken.access_token);
-                setConnected(true);
-                fetchTopTracks(tab);
-              } else {
-                disconnect();
-              }
-            }).catch(() => disconnect());
+      try {
+        const tokenData = JSON.parse(stored);
+        if (tokenData?.access_token) {
+          initSpotifyClient(tokenData.access_token);
+          setConnected(true);
+          
+          if (tokenExpired(tokenData)) {
+            if (tokenData.refresh_token) {
+              refreshToken(tokenData.refresh_token).then(newToken => {
+                if (newToken?.access_token) {
+                  saveToken(newToken);
+                  initSpotifyClient(newToken.access_token);
+                  setConnected(true);
+                  fetchTopTracks(tab);
+                } else {
+                  disconnect();
+                }
+              }).catch(() => disconnect());
+            } else {
+              disconnect();
+            }
           } else {
-            disconnect();
+            fetchTopTracks(tab);
           }
-        } else {
-          fetchTopTracks(tab);
         }
+      } catch (e) {
+        disconnect();
       }
     }
 
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     const errorParam = params.get('error');
+
     if (errorParam) {
-      console.error(errorParam);
-      window.history.replaceState({}, document.title, REDIRECT_URI);
+      window.history.replaceState({}, document.title, window.location.pathname);
       return;
     }
 
     if (code) {
-      const exchangedFlag = 'spotify_code_exchanged';
-      if (sessionStorage.getItem(exchangedFlag)) {
-        window.history.replaceState({}, document.title, REDIRECT_URI);
-        sessionStorage.removeItem(KEY_CODE_VERIFIER);
-        return;
-      }
+      if (ignoreEffect.current) return;
+      ignoreEffect.current = true;
 
       (async () => {
         setLoading(true);
         try {
           const verifier = sessionStorage.getItem(KEY_CODE_VERIFIER);
           if (!verifier) {
-            sessionStorage.removeItem('spotify_code_exchanged');
-            window.history.replaceState({}, document.title, REDIRECT_URI);
+            window.history.replaceState({}, document.title, window.location.pathname);
             setLoading(false);
             return;
           }
 
-          sessionStorage.setItem(exchangedFlag, '1');
-
           const token = await exchangeCodeForToken(code, verifier, REDIRECT_URI);
-          saveToken(token);
-          initSpotifyClient(token.access_token);
-          setConnected(true);
-          await fetchTopTracks(tab);
-
-          window.history.replaceState({}, document.title, REDIRECT_URI);
+          
+          if (token && token.access_token) {
+            saveToken(token);
+            initSpotifyClient(token.access_token);
+            setConnected(true);
+            await fetchTopTracks(tab);
+          }
+          
+          window.history.replaceState({}, document.title, window.location.pathname);
         } catch (err) {
-          sessionStorage.removeItem(exchangedFlag);
           console.error(err);
-          setError('Token exchange failed');
+          setError('Błąd autoryzacji Spotify');
+          disconnect();
         } finally {
           setLoading(false);
           sessionStorage.removeItem(KEY_CODE_VERIFIER);
         }
       })();
     }
+
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -148,12 +151,15 @@ export default function FavMusic({ user }) {
   }
 
   function tokenExpired(tokenData) {
-    if (!tokenData?.expires_at) return false;
+    if (!tokenData?.expires_at) return true;
     return Date.now() >= new Date(tokenData.expires_at).getTime();
   }
 
   function saveToken(tokenData) {
-    const expires_at = tokenData.expires_in ? new Date(Date.now() + tokenData.expires_in * 1000).toISOString() : tokenData.expires_at || null;
+    const expires_at = tokenData.expires_in 
+      ? new Date(Date.now() + tokenData.expires_in * 1000).toISOString() 
+      : (tokenData.expires_at || null);
+      
     const normalized = { ...tokenData, expires_at };
     sessionStorage.setItem(KEY_TOKEN, JSON.stringify(normalized));
   }
@@ -172,9 +178,9 @@ export default function FavMusic({ user }) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: body.toString(),
     });
+    
     if (!res.ok) {
-      const txt = await res.text();
-      throw new Error(`Token exchange failed: ${res.status} ${txt}`);
+      throw new Error(`Token exchange failed: ${res.status}`);
     }
     return res.json();
   }
@@ -185,14 +191,15 @@ export default function FavMusic({ user }) {
       refresh_token,
       client_id: CLIENT_ID,
     });
+    
     const res = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: body.toString(),
     });
+    
     if (!res.ok) {
-      const txt = await res.text();
-      throw new Error(`Refresh failed: ${res.status} ${txt}`);
+      throw new Error(`Refresh failed: ${res.status}`);
     }
     return res.json();
   }
@@ -228,7 +235,6 @@ export default function FavMusic({ user }) {
     const s = spotifyRef.current;
     setError(null);
     if (!s) {
-      setError('No Spotify client. Połącz najpierw konto.');
       return;
     }
     setLoading(true);
@@ -238,23 +244,24 @@ export default function FavMusic({ user }) {
       const items = res.items || [];
       setTracks(items);
     } catch (err) {
-      console.error(err);
-      const stored = JSON.parse(sessionStorage.getItem(KEY_TOKEN) || '{}');
-      if (err?.status === 401 && stored?.refresh_token) {
+      const stored = sessionStorage.getItem(KEY_TOKEN);
+      let tokenData = stored ? JSON.parse(stored) : null;
+
+      if (err?.status === 401 && tokenData?.refresh_token) {
         try {
-          const newToken = await refreshToken(stored.refresh_token);
-          const merged = { ...stored, ...newToken };
+          const newToken = await refreshToken(tokenData.refresh_token);
+          const merged = { ...tokenData, ...newToken };
           saveToken(merged);
           initSpotifyClient(merged.access_token);
+          
           const res2 = await spotifyRef.current.getMyTopTracks({ limit: 20, time_range: timeRangeForTab(selectedTab) });
-          const items2 = res2.items || [];
-          setTracks(items2);
+          setTracks(res2.items || []);
         } catch (e) {
           disconnect();
-          setError('Błąd odświeżania tokenu');
+          setError('Sesja wygasła, połącz ponownie.');
         }
       } else {
-        setError('Błąd pobierania top tracks');
+        setError('Błąd pobierania utworów.');
       }
     } finally {
       setLoading(false);
@@ -262,12 +269,10 @@ export default function FavMusic({ user }) {
   }
 
   const connect = async () => {
-    if (!CLIENT_ID) {
-      return;
-    }
+    if (!CLIENT_ID) return;
     
-    sessionStorage.removeItem('spotify_code_exchanged');
     sessionStorage.removeItem(KEY_CODE_VERIFIER);
+    sessionStorage.removeItem(KEY_TOKEN);
 
     const verifier = randomString(128);
     const challenge = await createCodeChallenge(verifier);
@@ -291,7 +296,6 @@ export default function FavMusic({ user }) {
   function disconnect() {
     sessionStorage.removeItem(KEY_TOKEN);
     sessionStorage.removeItem(KEY_CODE_VERIFIER);
-    sessionStorage.removeItem('spotify_code_exchanged');
     window.history.replaceState({}, document.title, window.location.pathname);
     setConnected(false);
     setTracks([]);

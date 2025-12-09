@@ -11,16 +11,19 @@ import FavMusic from './pages/FavMusic';
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [isSessionReady, setIsSessionReady] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
+      setIsSessionReady(true);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      setIsSessionReady(true);
     });
 
     return () => {
@@ -29,8 +32,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (!isSessionReady) return;
+
     const checkProfile = async () => {
       if (!user) return;
+      
       if (location.pathname === '/profile') return;
       if (location.pathname === '/FavMusic' && location.search.includes('code=')) return;
 
@@ -54,7 +60,7 @@ export default function App() {
     };
 
     checkProfile();
-  }, [user, location.pathname, location.search, navigate]);
+  }, [user, isSessionReady, location.pathname, location.search, navigate]);
 
   const handleLogout = async () => {
     setUser(null);
@@ -99,6 +105,10 @@ export default function App() {
       inst.show();
     }
   };
+
+  if (!isSessionReady) {
+    return null;
+  }
 
   return (
     <>
