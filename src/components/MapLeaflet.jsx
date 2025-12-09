@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function MapLeaflet({
   center = [50.0647, 19.9450],
   zoom = 13,
-  filterCategory = null // null | 'bar' | 'pub' | 'klub_nocny' etc.
+  filterCategory = null 
 }) {
   const mapRef = useRef(null);
   const containerRef = useRef(null);
@@ -22,7 +22,6 @@ export default function MapLeaflet({
     return `<span style="color:#f4c542;font-weight:700">${out}</span>`;
   };
 
-  // kolor ikony wg kategorii (zwraca nazwy klas)
   function colorForCategory(cat) {
     if (!cat) return 'green';
     if (cat === 'bar') return 'red';
@@ -35,7 +34,6 @@ export default function MapLeaflet({
     return `marker-${colorForCategory(cat)}`;
   }
 
-  // prosty Levenshtein (pozostawiony jeśli potrzeba dopasowań)
   function levenshtein(a = '', b = '') {
     a = a.split(''); b = b.split('');
     const m = a.length, n = b.length;
@@ -55,8 +53,6 @@ export default function MapLeaflet({
     }
     return prevRow[n];
   }
-
-  // formatter operating_hours { monday:"...", ... } -> tekst PL (linia na dzień)
   function formatOperatingHours(oh) {
     if (!oh || typeof oh !== 'object') return '';
     const mapKey = {
@@ -73,7 +69,6 @@ export default function MapLeaflet({
     return lines.join('\n');
   }
 
-  // helper: create Leaflet icon with className that we color via CSS
   function makeIcon(cat) {
     return window.L.icon({
       iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -87,7 +82,6 @@ export default function MapLeaflet({
   }
 
   useEffect(() => {
-    // dodaj style kolorów do dokumentu raz
     if (!document.getElementById('mapleaflet-category-styles')) {
       const style = document.createElement('style');
       style.id = 'mapleaflet-category-styles';
@@ -129,11 +123,9 @@ export default function MapLeaflet({
     Promise.all([ratingsFetch, scraperCacheFetch]).then(([ratings, cache]) => {
       if (cancelled) return;
 
-      // last_updated
       const lu = cache?.last_updated || cache?.places?.last_updated || null;
       setLastUpdated(lu || null);
 
-      // remove previous markers layer
       if (mapRef.current._barsLayer) {
         mapRef.current.removeLayer(mapRef.current._barsLayer);
       }
@@ -142,7 +134,6 @@ export default function MapLeaflet({
       const markers = [];
 
       places.forEach(place => {
-        // filter by category prop
         if (filterCategory && place.category && place.category !== filterCategory) return;
 
         const name = place.name || place.title || 'Brak nazwy';

@@ -16,7 +16,6 @@ export default function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Funkcja sprawdzająca czy użytkownik ma uzupełniony profil
   const checkProfileCompletion = async (currentUser) => {
     if (!currentUser) return;
 
@@ -27,7 +26,6 @@ export default function App() {
         .eq('id', currentUser.id)
         .single();
 
-      // Jeśli brak profilu lub imienia, a nie jesteśmy na stronie profilu -> przekieruj
       if (!data || !data.first_name) {
         if (location.pathname !== '/profile') {
           navigate('/profile');
@@ -42,7 +40,6 @@ export default function App() {
   useEffect(() => {
     let mounted = true;
 
-    // 1. Sprawdź sesję przy starcie
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!mounted) return;
       const currentUser = session?.user ?? null;
@@ -50,7 +47,6 @@ export default function App() {
       if (currentUser) checkProfileCompletion(currentUser);
     });
 
-    // 2. Nasłuchuj zmian autoryzacji (logowanie/wylogowanie w innych kartach lub po czasie)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!mounted) return;
       const currentUser = session?.user ?? null;
@@ -69,7 +65,6 @@ export default function App() {
   }, [location.pathname]);
 
   const handleLogout = async () => {
-    // Najpierw czyścimy stan lokalny, aby użytkownik od razu widział efekt
     setUser(null);
     try {
       await supabase.auth.signOut();
@@ -88,7 +83,6 @@ export default function App() {
       if (inst) inst.hide();
     });
     
-    // Usuń ewentualne pozostałości po modalach
     document.body.classList.remove('modal-open');
     document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
   };
