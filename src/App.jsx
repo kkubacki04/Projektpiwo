@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import Navbar from './components/Navbar';
 import LoginModal from './components/loginModal';
@@ -39,7 +39,27 @@ function AuthLogger({ onAuthChange }) {
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [profileChecked, setProfileChecked] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const checkProfileCompletion = async (currentUser) => {
+    if (!currentUser) return;
+
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('first_name')
+      .eq('id', currentUser.id)
+      .single();
+
+    if (!data || !data.first_name) {
+      console.log('Profil nieuzupełniony, przekierowanie...');
+      if (location.pathname !== '/profile') {
+        navigate('/profile');
+      }
+    }
+    setProfileChecked(true);
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -50,18 +70,29 @@ export default function App() {
         return;
       }
       if (!mounted) return;
-      setUser(data?.session?.user ?? null);
-    })();
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
       
+      const currentUser = data?.session?.user ?? null;
+      setUser(currentUser);
+      
+      if (currentUser) {
+        checkProfileCompletion(currentUser);
+      }
+    })();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      const currentUser = session?.user ?? null;
+      setUser(currentUser);
+      
+      if (currentUser) {
+        checkProfileCompletion(currentUser);
+      }
     });
 
     return () => {
       mounted = false;
       if (listener?.subscription?.unsubscribe) listener.subscription.unsubscribe();
     };
-  }, []);
+  }, [location.pathname]);
 
   const handleLogout = async () => {
     try {
@@ -122,24 +153,21 @@ export default function App() {
 
   return (
     <>
-     <AuthLogger onAuthChange={setUser} />
+      <AuthLogger onAuthChange={setUser} />
       <Navbar user={user} onLogout={handleLogout} onOpenLogin={openLogin} />
-
 
       <LoginModal />
       <RegisterModal />
 
-    
-        <header>
-        </header>
+      <header>
+      </header>
 
-        <Routes>
-          <Route path="/" element={<Home user={user} goToProfile={goToProfile} goToMovies={goToMovies} goToMusic={goToMusic} />} />
-          <Route path="/profile" element={<Profil user={user} />} />
-          <Route path="/FavMovies" element={<FavMovies user={user} />} />
-          <Route path="/FavMusic" element={<FavMusic user={user} />} />
-        </Routes>
-      
+      <Routes>
+        <Route path="/" element={<Home user={user} goToProfile={goToProfile} goToMovies={goToMovies} goToMusic={goToMusic} />} />
+        <Route path="/profile" element={<Profil user={user} />} />
+        <Route path="/FavMovies" element={<FavMovies user={user} />} />
+        <Route path="/FavMusic" element={<FavMusic user={user} />} />
+      </Routes>
     </>
   );
 }

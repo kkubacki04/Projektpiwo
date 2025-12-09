@@ -2,9 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { searchMovies, popularMovies, searchSeries, popularSeries } from '../lib/tmdb';
 import MovieCard from '../components/MovieCard';
 import MovieModal from '../components/MovieModal';
+import { supabase } from '../supabaseClient';
 import '../index.css';
 
-export default function FavMovies() {
+export default function FavMovies({ user }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
@@ -25,35 +26,34 @@ export default function FavMovies() {
   };
 
   const fetchPage = async (p = 1, q = query, type = mediaType) => {
-  setLoading(true);
-  try {
-    if (!q) {
-      const data = type === 'tv' ? await popularSeries(p) : await popularMovies(p);
-      const normalized = normalizeResults(data.results, type);
-      setResults(normalized);
-      setTotalPages( 100 || 0);
-      setPage(p);
-      setMode('popular');
-    } else {
-      const data = type === 'tv' ? await searchSeries(q, p) : await searchMovies(q, p);
-      const normalized = normalizeResults(data.results, type);
-      setResults(normalized);
-      setTotalPages( 20 || 0);
-      setPage(p);
-      setMode('search');
+    setLoading(true);
+    try {
+      if (!q) {
+        const data = type === 'tv' ? await popularSeries(p) : await popularMovies(p);
+        const normalized = normalizeResults(data.results, type);
+        setResults(normalized);
+        setTotalPages(100 || 0);
+        setPage(p);
+        setMode('popular');
+      } else {
+        const data = type === 'tv' ? await searchSeries(q, p) : await searchMovies(q, p);
+        const normalized = normalizeResults(data.results, type);
+        setResults(normalized);
+        setTotalPages(20 || 0);
+        setPage(p);
+        setMode('search');
+      }
+    } catch (err) {
+      console.error('Fetch error', err);
+      setResults([]);
+      setTotalPages(0);
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error('Fetch error', err);
-    setResults([]);
-    setTotalPages(0);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   useEffect(() => {
     fetchPage(1, '', mediaType);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -71,12 +71,10 @@ export default function FavMovies() {
     }, 350);
 
     return () => clearTimeout(debounceRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, mediaType]);
 
   useEffect(() => {
     fetchPage(page, query, mediaType);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   const handleMediaTypeChange = (type) => {
@@ -93,6 +91,32 @@ export default function FavMovies() {
     setQuery('');
     setPage(1);
     fetchPage(1, '', mediaType);
+  };
+
+  const handleAddToFavorites = async (movie) => {
+    if (!user) {
+      alert('Musisz być zalogowany, aby dodawać filmy do ulubionych.');
+      return;
+    }
+
+    const title = movie.title || movie.name;
+    const releaseDate = movie.release_date || movie.first_air_date || '';
+    const releaseYear = releaseDate.split('-')[0];
+
+    try {
+      const { error } = await supabase.from('favorite_movies').insert({
+        user_id: user.id,
+        title: title,
+        release_year: releaseYear
+      });
+
+      if (error) throw error;
+      alert(`Dodano "${title}" do ulubionych!`);
+      setSelectedMovie(null);
+    } catch (error) {
+      console.error('Błąd dodawania do ulubionych:', error);
+      alert('Wystąpił błąd podczas dodawania do ulubionych.');
+    }
   };
 
   return (
@@ -162,30 +186,25 @@ export default function FavMovies() {
       )}
 
       {selectedMovie && (
-        <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
+        <MovieModal 
+          movie={selectedMovie} 
+          onClose={() => setSelectedMovie(null)} 
+          onAddToFavorites={handleAddToFavorites}
+        />
       )}
 
       <style>{`
         .movie-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  align-items: start;
-}
-
-
-@media (max-width: 1200px) {
-  .movie-grid { grid-template-columns: repeat(4, 1fr); }
-}
-@media (max-width: 992px) {
-  .movie-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 576px) {
-  .movie-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 360px) {
-  .movie-grid { grid-template-columns: 1fr; }
-}
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1rem;
+          align-items: start;
+        }
+        @media (max-width: 1200px) { .movie-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 992px) { .movie-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 576px) { .movie-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 360px) { .movie-grid { grid-template-columns: 1fr; } }
+        
         .movie-card {
           border: 1px solid #e4e4e4;
           border-radius: 8px;
@@ -201,9 +220,7 @@ export default function FavMovies() {
         .movie-title { margin: 0; font-size: 1rem; line-height: 1.1; }
         .movie-meta { display:flex; align-items:center; color:#555; font-size:0.85rem; }
         .movie-overview { margin: 0; font-size:0.85rem; color:#444; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
-        @media (max-width: 576px) {
-          .movie-poster { height: 200px; }
-        }
+        @media (max-width: 576px) { .movie-poster { height: 200px; } }
       `}</style>
     </div>
   );

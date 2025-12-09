@@ -39,7 +39,7 @@ async function createCodeChallenge(verifier) {
   return base64urlEncode(hashed);
 }
 
-export default function FavMusic() {
+export default function FavMusic({ user }) {
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
   const [tab, setTab] = useState('short');
@@ -100,9 +100,8 @@ export default function FavMusic() {
         setLoading(true);
         try {
           const verifier = sessionStorage.getItem(KEY_CODE_VERIFIER);
-          console.log('Exchanging code', { code, verifierLength: verifier?.length, REDIRECT_URI });
           if (!verifier) {
-            console.warn('PKCE verifier missing on exchange; clearing exchanged flag and URL to allow retry.');
+            console.warn('PKCE verifier missing');
             sessionStorage.removeItem('spotify_code_exchanged');
             window.history.replaceState({}, document.title, REDIRECT_URI);
             setLoading(false);
@@ -135,7 +134,6 @@ export default function FavMusic() {
         audioRef.current = null;
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function timeRangeForTab(t) {
@@ -200,6 +198,29 @@ export default function FavMusic() {
     spotifyRef.current = s;
   }
 
+  async function saveTracksToSupabase(items) {
+    if (!user) return;
+    try {
+      const top5 = items.slice(0, 5).map(t => ({
+        user_id: user.id,
+        artist: t.artists.map(a => a.name).join(', '),
+        title: t.name,
+        genre: ''
+      }));
+
+      await supabase.from('favorite_music').delete().eq('user_id', user.id);
+      
+      const { error } = await supabase.from('favorite_music').insert(top5);
+      if (error) {
+        console.error('Supabase insert error', error);
+      } else {
+        console.log('Zapisano top 5 utworów do Supabase');
+      }
+    } catch (e) {
+      console.error('Save tracks error', e);
+    }
+  }
+
   async function fetchTopTracks(selectedTab = tab) {
     const s = spotifyRef.current;
     setError(null);
@@ -211,7 +232,13 @@ export default function FavMusic() {
     try {
       const time_range = timeRangeForTab(selectedTab);
       const res = await s.getMyTopTracks({ limit: 20, time_range });
-      setTracks(res.items || []);
+      const items = res.items || [];
+      setTracks(items);
+      
+      if (items.length > 0) {
+        await saveTracksToSupabase(items);
+      }
+
     } catch (err) {
       console.error('fetch top tracks error', err);
       const stored = JSON.parse(sessionStorage.getItem(KEY_TOKEN) || '{}');
@@ -222,7 +249,13 @@ export default function FavMusic() {
           saveToken(merged);
           initSpotifyClient(merged.access_token);
           const res2 = await spotifyRef.current.getMyTopTracks({ limit: 20, time_range: timeRangeForTab(selectedTab) });
-          setTracks(res2.items || []);
+          const items2 = res2.items || [];
+          setTracks(items2);
+          
+          if (items2.length > 0) {
+            await saveTracksToSupabase(items2);
+          }
+
         } catch (e) {
           console.error('refresh during fetch failed', e);
           disconnect();
@@ -241,10 +274,7 @@ export default function FavMusic() {
       console.error('REACT_APP_SPOTIFY_CLIENT_ID not set');
       return;
     }
-    if (typeof CLIENT_ID !== 'string' || CLIENT_ID.trim().length !== 32) {
-      console.error('CLIENT_ID appears invalid length:', CLIENT_ID?.length, 'value:', CLIENT_ID);
-    }
-
+    
     sessionStorage.removeItem('spotify_code_exchanged');
     sessionStorage.removeItem(KEY_CODE_VERIFIER);
 
@@ -264,11 +294,7 @@ export default function FavMusic() {
       show_dialog: 'true',
     });
 
-    const authUrl = `https://accounts.spotify.com/authorize?${params.toString()}`;
-
-    console.log('Spotify auth params', { CLIENT_ID, REDIRECT_URI, scopeParam, code_challenge: challenge, verifierLength: verifier.length, authUrl });
-
-    window.location.href = authUrl;
+    window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
   };
 
   function disconnect() {
@@ -383,7 +409,6 @@ export default function FavMusic() {
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 6, cursor: 'pointer' }}
                     onClick={() => handleThumbnailClick(t)}
                   />
-                  {/* playing indicator */}
                   {playingTrackId === t.id && isPlaying && (
                     <div style={{
                       position: 'absolute', left: 6, top: 6, width: 18, height: 18, borderRadius: 4,

@@ -1,9 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MapLeaflet from '../components/MapLeaflet';
+import { supabase } from '../supabaseClient';
 
 export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
   const navigate = useNavigate();
+  
+  const [profile, setProfile] = useState(null);
+  const [favMovies, setFavMovies] = useState([]);
+  const [favMusic, setFavMusic] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      fetchUserData();
+    }
+  }, [user]);
+
+  const fetchUserData = async () => {
+    setLoading(true);
+    try {
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('first_name, last_name, description')
+        .eq('id', user.id)
+        .single();
+      
+      if (profileData) setProfile(profileData);
+
+      const { data: moviesData } = await supabase
+        .from('favorite_movies')
+        .select('*')
+        .eq('user_id', user.id);
+      
+      if (moviesData) setFavMovies(moviesData);
+
+      const { data: musicData } = await supabase
+        .from('favorite_music')
+        .select('*')
+        .eq('user_id', user.id)
+        .limit(5);
+      
+      if (musicData) setFavMusic(musicData);
+
+    } catch (error) {
+      console.error('Błąd pobierania danych:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleGoToProfile = () => {
     if (typeof goToProfile === 'function') {
@@ -26,6 +71,10 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
       navigate('/FavMusic');
     }
   };
+
+  const displayName = profile 
+    ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() 
+    : 'Użytkownik';
 
   return (
     <div className="container" style={{ paddingTop: 90 }}>
@@ -61,10 +110,7 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
 
           <section id="mapSection">
             <h2 className="h5 mb-3">Mapa barów w Krakowie</h2>
-
-            {/* Tutaj wstawiamy komponent mapy */}
             <MapLeaflet />
-
             <p className="small text-muted mt-2">Kliknij marker, aby otworzyć formularz dołączenia do spotkania.</p>
           </section>
 
@@ -102,26 +148,29 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
           <div className="card mb-3">
             <div className="card-body">
               <h3 className="h6 mb-2">Profil</h3>
-              <div className="d-flex align-items-center gap-3 mb-2">
-                <img src="/avatar.jpg" alt="avatar" className="rounded-circle" width="56" height="56" />
-                <div>
-                  <div className="fw-semibold">Kacper</div>
-                  <div className="text-muted small">Fan taniego piwa · 21 lat</div>
-                </div>
-              </div>
+              {user ? (
+                <>
+                  <div className="d-flex align-items-center gap-3 mb-2">
+                    <img src="/avatar.jpg" alt="avatar" className="rounded-circle" width="56" height="56" />
+                    <div>
+                      <div className="fw-semibold">{displayName}</div>
+                      <div className="text-muted small">Fan taniego piwa</div>
+                    </div>
+                  </div>
 
-              <div className="mb-3">
-                <div className="fw-semibold mb-1">Krótki opis</div>
-                <p id="profile-bio" className="mb-2 text-break">Lubię pić piwo.</p>
-                <div className="d-flex gap-2">
-                  <button className="btn btn-outline-primary btn-sm" id="editProfileBtn">Edytuj profil</button>
-                  <button className="btn btn-outline-secondary btn-sm" id="editBioBtn">Edytuj opis</button>
-                </div>
-              </div>
-
-              <div className="d-grid">
-                <button className="btn btn-outline-primary btn-sm" onClick={handleGoToProfile}>Przejdź do profilu</button>
-              </div>
+                  <div className="mb-3">
+                    <div className="fw-semibold mb-1">Krótki opis</div>
+                    <p id="profile-bio" className="mb-2 text-break">
+                      {profile?.description || 'Brak opisu.'}
+                    </p>
+                    <div className="d-flex gap-2">
+                      <button className="btn btn-outline-primary btn-sm" onClick={handleGoToProfile}>Edytuj profil</button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <p className="text-muted small">Zaloguj się, aby zobaczyć swój profil.</p>
+              )}
             </div>
           </div>
 
@@ -129,28 +178,45 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
             <div className="card-body">
               <h3 className="h6 mb-2">Ulubione filmy</h3>
               <p className="small text-muted mb-2">Filmy, które możesz wykorzystać jako temat rozmowy przy stoliku</p>
-              <ul className="list-unstyled mb-0">
-                <li className="mb-1">Pulp Fiction · 1994</li>
-                <li className="mb-1">Amélie · 2001</li>
-                <li className="mb-1">La La Land · 2016</li>
-              </ul>
+              
+              {user && favMovies.length > 0 ? (
+                <ul className="list-unstyled mb-0">
+                  {favMovies.map((movie) => (
+                    <li key={movie.id} className="mb-1">
+                      {movie.title} {movie.release_year ? `· ${movie.release_year}` : ''}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="small text-muted">Brak ulubionych filmów.</p>
+              )}
+
               <div className="mt-3">
-                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleGoToMovies}>Więcej</button>
+                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleGoToMovies}>Zarządzaj filmami</button>
               </div>
             </div>
           </div>
 
           <div id="music" className="card">
             <div className="card-body">
-              <h3 className="h6 mb-2">Ulubiona muzyka</h3>
-              <p className="small text-muted mb-2">Playlisty, które lubisz</p>
-              <div className="d-flex flex-wrap gap-2">
-                <span className="badge bg-light border text-dark">Indie</span>
-                <span className="badge bg-light border text-dark">Rock</span>
-                <span className="badge bg-light border text-dark">Elektronika</span>
-              </div>
+              <h3 className="h6 mb-2">Ulubiona muzyka (Top 5)</h3>
+              <p className="small text-muted mb-2">Najczęściej słuchane w tym roku</p>
+              
+              {user && favMusic.length > 0 ? (
+                <ul className="list-unstyled mb-0">
+                  {favMusic.map((track) => (
+                    <li key={track.id} className="mb-1 d-flex justify-content-between align-items-center">
+                      <span>{track.artist} - {track.title}</span>
+                      {track.genre && <span className="badge bg-light text-dark border" style={{fontSize: '0.7em'}}>{track.genre}</span>}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="small text-muted">Brak ulubionych utworów.</p>
+              )}
+
               <div className="mt-3">
-                <button className="btn btn-outline-primary btn-sm" onClick={handleGoToMusic}>Edytuj</button>
+                <button className="btn btn-outline-primary btn-sm" onClick={handleGoToMusic}>Edytuj / Pobierz ze Spotify</button>
               </div>
             </div>
           </div>
