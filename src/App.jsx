@@ -32,6 +32,7 @@ export default function App() {
     const checkProfile = async () => {
       if (!user) return;
       if (location.pathname === '/profile') return;
+      if (location.pathname === '/FavMusic' &&Qm.search.includes('code=')) return;
 
       try {
         const { data, error } = await supabase
@@ -44,16 +45,16 @@ export default function App() {
           navigate('/profile');
         }
       } catch (err) {
-        if (err.code !== 'PGRST116') {
-          console.error(err);
-        } else {
+        if (err.code === 'PGRST116') {
            navigate('/profile');
+        } else {
+           console.error(err);
         }
       }
     };
 
     checkProfile();
-  }, [user, location.pathname, navigate]);
+  }, [user, location.pathname, location.search, navigate]);
 
   const handleLogout = async () => {
     setUser(null);

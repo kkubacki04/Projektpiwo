@@ -83,7 +83,7 @@ export default function FavMusic({ user }) {
     const code = params.get('code');
     const errorParam = params.get('error');
     if (errorParam) {
-      console.error('Spotify auth error', errorParam);
+      console.error(errorParam);
       window.history.replaceState({}, document.title, REDIRECT_URI);
       return;
     }
@@ -101,7 +101,6 @@ export default function FavMusic({ user }) {
         try {
           const verifier = sessionStorage.getItem(KEY_CODE_VERIFIER);
           if (!verifier) {
-            console.warn('PKCE verifier missing');
             sessionStorage.removeItem('spotify_code_exchanged');
             window.history.replaceState({}, document.title, REDIRECT_URI);
             setLoading(false);
@@ -119,7 +118,7 @@ export default function FavMusic({ user }) {
           window.history.replaceState({}, document.title, REDIRECT_URI);
         } catch (err) {
           sessionStorage.removeItem(exchangedFlag);
-          console.error('Error exchanging code', err);
+          console.error(err);
           setError('Token exchange failed');
         } finally {
           setLoading(false);
@@ -135,6 +134,12 @@ export default function FavMusic({ user }) {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (user && tracks.length > 0) {
+      saveTracksToSupabase(tracks);
+    }
+  }, [user, tracks]);
 
   function timeRangeForTab(t) {
     if (t === 'short') return 'short_term';
@@ -212,12 +217,10 @@ export default function FavMusic({ user }) {
       
       const { error } = await supabase.from('favorite_music').insert(top5);
       if (error) {
-        console.error('Supabase insert error', error);
-      } else {
-        console.log('Zapisano top 5 utworów do Supabase');
+        console.error(error);
       }
     } catch (e) {
-      console.error('Save tracks error', e);
+      console.error(e);
     }
   }
 
@@ -234,13 +237,8 @@ export default function FavMusic({ user }) {
       const res = await s.getMyTopTracks({ limit: 20, time_range });
       const items = res.items || [];
       setTracks(items);
-      
-      if (items.length > 0) {
-        await saveTracksToSupabase(items);
-      }
-
     } catch (err) {
-      console.error('fetch top tracks error', err);
+      console.error(err);
       const stored = JSON.parse(sessionStorage.getItem(KEY_TOKEN) || '{}');
       if (err?.status === 401 && stored?.refresh_token) {
         try {
@@ -251,13 +249,7 @@ export default function FavMusic({ user }) {
           const res2 = await spotifyRef.current.getMyTopTracks({ limit: 20, time_range: timeRangeForTab(selectedTab) });
           const items2 = res2.items || [];
           setTracks(items2);
-          
-          if (items2.length > 0) {
-            await saveTracksToSupabase(items2);
-          }
-
         } catch (e) {
-          console.error('refresh during fetch failed', e);
           disconnect();
           setError('Błąd odświeżania tokenu');
         }
@@ -271,7 +263,6 @@ export default function FavMusic({ user }) {
 
   const connect = async () => {
     if (!CLIENT_ID) {
-      console.error('REACT_APP_SPOTIFY_CLIENT_ID not set');
       return;
     }
     
@@ -325,9 +316,7 @@ export default function FavMusic({ user }) {
         audioRef.current.pause();
         setIsPlaying(false);
       } else {
-        audioRef.current.play().catch(e => {
-          console.warn('Audio play failed', e);
-        });
+        audioRef.current.play().catch(() => {});
         setIsPlaying(true);
       }
       return;
@@ -342,8 +331,7 @@ export default function FavMusic({ user }) {
     audio.play().then(() => {
       setPlayingTrackId(track.id);
       setIsPlaying(true);
-    }).catch(e => {
-      console.warn('Audio play failed', e);
+    }).catch(() => {
       setPlayingTrackId(null);
       setIsPlaying(false);
     });
@@ -354,7 +342,6 @@ export default function FavMusic({ user }) {
       audioRef.current = null;
     };
     audio.onerror = () => {
-      console.warn('Audio error for track', track.id);
       setPlayingTrackId(null);
       setIsPlaying(false);
       audioRef.current = null;
