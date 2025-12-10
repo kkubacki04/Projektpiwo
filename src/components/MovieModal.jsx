@@ -1,7 +1,7 @@
 import React from 'react';
 import { posterUrl } from '../lib/tmdb';
 
-export default function MovieModal({ movie, onClose, onAddToFavorites }) {
+export default function MovieModal({ movie, onClose, onAddToFavorites, onRemoveFromFavorites, isFavorite }) {
   if (!movie) return null;
 
   const title = movie.title || movie.name || 'Brak tytułu';
@@ -36,11 +36,19 @@ export default function MovieModal({ movie, onClose, onAddToFavorites }) {
               <a className="btn btn-primary" href={tmdbUrl} target="_blank" rel="noreferrer">
                 Zobacz w TMDB
               </a>
-              {onAddToFavorites && (
-                <button className="btn btn-success" onClick={() => onAddToFavorites(movie)}>
-                  Dodaj do ulubionych
+              
+              {isFavorite ? (
+                <button className="btn btn-danger" onClick={() => onRemoveFromFavorites(movie)}>
+                  Usuń z ulubionych
                 </button>
+              ) : (
+                onAddToFavorites && (
+                  <button className="btn btn-success" onClick={() => onAddToFavorites(movie)}>
+                    Dodaj do ulubionych
+                  </button>
+                )
               )}
+
               <button className="btn btn-outline-secondary" onClick={onClose}>Zamknij</button>
             </div>
           </div>

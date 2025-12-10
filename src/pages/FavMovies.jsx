@@ -15,6 +15,8 @@ export default function FavMovies({ user }) {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [mode, setMode] = useState('popular');
   const [mediaType, setMediaType] = useState('movie');
+  
+  const [favorites, setFavorites] = useState([]);
 
   const normalizeResults = (dataResults = [], type = 'movie') => {
     return (dataResults || []).map(item => ({
@@ -24,6 +26,22 @@ export default function FavMovies({ user }) {
       media_type: type,
     }));
   };
+
+  const fetchFavorites = async () => {
+    if (!user) return;
+    const { data } = await supabase
+      .from('favorite_movies')
+      .select('title')
+      .eq('user_id', user.id);
+    
+    if (data) {
+      setFavorites(data.map(item => item.title));
+    }
+  };
+
+  useEffect(() => {
+    fetchFavorites();
+  }, [user]);
 
   const fetchPage = async (p = 1, q = query, type = mediaType) => {
     setLoading(true);
@@ -110,14 +128,46 @@ export default function FavMovies({ user }) {
         release_year: releaseYear
       });
 
-      if (error) throw error;
-      alert(`Dodano "${title}" do ulubionych!`);
-      setSelectedMovie(null);
+      if (error) {
+        if (error.code === '23505') { 
+          alert('Ten film jest już w ulubionych.');
+        } else {
+          throw error;
+        }
+      } else {
+        setFavorites(prev => [...prev, title]);
+        alert(`Dodano "${title}" do ulubionych!`);
+      }
     } catch (error) {
-      console.error('Błąd dodawania do ulubionych:', error);
+      console.error(error);
       alert('Wystąpił błąd podczas dodawania do ulubionych.');
     }
   };
+
+  const handleRemoveFromFavorites = async (movie) => {
+    if (!user) return;
+    const title = movie.title || movie.name;
+
+    try {
+      const { error } = await supabase
+        .from('favorite_movies')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('title', title);
+
+      if (error) throw error;
+
+      setFavorites(prev => prev.filter(t => t !== title));
+      alert(`Usunięto "${title}" z ulubionych.`);
+    } catch (error) {
+      console.error(error);
+      alert('Nie udało się usunąć filmu.');
+    }
+  };
+
+  const isSelectedMovieFavorite = selectedMovie 
+    ? favorites.includes(selectedMovie.title || selectedMovie.name)
+    : false;
 
   return (
     <div className="container" style={{ paddingTop: 90 }}>
@@ -190,6 +240,8 @@ export default function FavMovies({ user }) {
           movie={selectedMovie} 
           onClose={() => setSelectedMovie(null)} 
           onAddToFavorites={handleAddToFavorites}
+          onRemoveFromFavorites={handleRemoveFromFavorites}
+          isFavorite={isSelectedMovieFavorite}
         />
       )}
 
