@@ -22,7 +22,7 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
     try {
       const { data: profileData } = await supabase
         .from('profiles')
-        .select('first_name, last_name, description')
+        .select('first_name, last_name, description, avatar_url')
         .eq('id', user.id)
         .single();
       
@@ -75,6 +75,9 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
   const displayName = profile 
     ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() 
     : 'Użytkownik';
+
+  // Domyślny avatar jeśli user nie ma własnego
+  const avatarSrc = profile?.avatar_url || '/avatar.jpg';
 
   return (
     <div className="container" style={{ paddingTop: 90 }}>
@@ -151,7 +154,14 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
               {user ? (
                 <>
                   <div className="d-flex align-items-center gap-3 mb-2">
-                    <img src="/avatar.jpg" alt="avatar" className="rounded-circle" width="56" height="56" />
+                    <img 
+                      src={avatarSrc} 
+                      alt="avatar" 
+                      className="rounded-circle" 
+                      width="56" 
+                      height="56" 
+                      style={{ objectFit: 'cover' }}
+                    />
                     <div>
                       <div className="fw-semibold">{displayName}</div>
                       <div className="text-muted small">Fan taniego piwa</div>
