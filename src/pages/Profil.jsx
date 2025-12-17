@@ -73,6 +73,15 @@ export default function Profil({ user }) {
         throw uploadError;
       }
 
+      if (formData.avatar_url) {
+        const oldUrl = formData.avatar_url;
+        const parts = oldUrl.split('/avatars/');
+        if (parts.length === 2) {
+          const oldPath = decodeURIComponent(parts[1]);
+          await supabase.storage.from('avatars').remove([oldPath]);
+        }
+      }
+
       const { data } = supabase.storage.from('avatars').getPublicUrl(filePath);
       
       setFormData(prev => ({ ...prev, avatar_url: data.publicUrl }));
