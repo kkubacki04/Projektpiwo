@@ -12,12 +12,18 @@ export default function UserProfileModal({ show, onClose, userId }) {
       fetchUserDetails();
     } else {
       setProfile(null);
+      setMovies([]);
+      setMusic([]);
     }
   }, [show, userId]);
 
   const fetchUserDetails = async () => {
     setLoading(true);
     try {
+      const safetyTimer = setTimeout(() => setLoading(false), 5000);
+
+      await supabase.auth.getSession(); 
+
       const { data: prof } = await supabase.from('profiles').select('*').eq('id', userId).single();
       setProfile(prof);
 
@@ -26,6 +32,8 @@ export default function UserProfileModal({ show, onClose, userId }) {
 
       const { data: mus } = await supabase.from('favorite_music').select('*').eq('user_id', userId).limit(5);
       setMusic(mus || []);
+
+      clearTimeout(safetyTimer);
     } catch (e) {
       console.error(e);
     } finally {
@@ -34,6 +42,9 @@ export default function UserProfileModal({ show, onClose, userId }) {
   };
 
   if (!show) return null;
+
+
+  const interests = profile?.interests || [];
 
   return (
     <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1060 }}>
@@ -69,6 +80,19 @@ export default function UserProfileModal({ show, onClose, userId }) {
                     <p className="text-muted">{profile.description}</p>
                   </div>
                 )}
+
+                <div className="mb-3">
+                  <strong>Zainteresowania:</strong>
+                  {interests.length > 0 ? (
+                    <div className="d-flex flex-wrap gap-1 mt-1">
+                      {interests.map((int, i) => (
+                        <span key={i} className="badge bg-light text-dark border fw-normal">{int}</span>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="small text-muted">Brak podanych zainteresowań.</p>
+                  )}
+                </div>
 
                 <hr />
 

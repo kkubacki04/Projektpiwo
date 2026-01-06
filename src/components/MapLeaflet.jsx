@@ -1,5 +1,62 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+
+const normalize = (s) =>
+  (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+const renderStars = (n) => {
+  if (n === null || n === undefined) return '—';
+  const full = Math.floor(n);
+  const half = (n - full) >= 0.5;
+  let out = '★'.repeat(full);
+  if (half) out += '☆';
+  out = out.padEnd(5, '☆');
+  return `<span style="color:#f4c542;font-weight:700">${out}</span>`;
+};
+
+function formatOperatingHours(oh) {
+  if (!oh || typeof oh !== 'object') return '';
+  const mapKey = {
+    monday: 'poniedziałek', tuesday: 'wtorek', wednesday: 'środa',
+    thursday: 'czwartek', friday: 'piątek', saturday: 'sobota', sunday: 'niedziela'
+  };
+  const order = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+  const lines = [];
+  for (const k of order) {
+    const val = oh[k];
+    if (!val) continue;
+    lines.push(`${mapKey[k]} ${val}`);
+  }
+  return lines.join('\n');
+}
+
+function isNear(lat1, lng1, lat2, lng2) {
+  const threshold = 0.00005;
+  return Math.abs(lat1 - lat2) < threshold && Math.abs(lng1 - lng2) < threshold;
+}
+
+function groupMeetings(meetingsList) {
+  const groups = [];
+  meetingsList.forEach(m => {
+    const latVal = Number(m.lat);
+    const lngVal = Number(m.lng);
+    if (isNaN(latVal) || isNaN(lngVal)) return;
+
+    let existingGroup = groups.find(g => isNear(g.lat, g.lng, latVal, lngVal));
+    
+    if (existingGroup) {
+      existingGroup.items.push(m);
+    } else {
+      groups.push({
+        lat: latVal,
+        lng: lngVal,
+        items: [m]
+      });
+    }
+  });
+  return groups;
+}
+
 export default function MapLeaflet({
   center = [50.0647, 19.9450],
   zoom = 13,
@@ -13,96 +70,12 @@ export default function MapLeaflet({
   const containerRef = useRef(null);
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  const normalize = (s) =>
-    (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-
-  const renderStars = (n) => {
-    if (n === null || n === undefined) return '—';
-    const full = Math.floor(n);
-    const half = (n - full) >= 0.5;
-    let out = '★'.repeat(full);
-    if (half) out += '☆';
-    out = out.padEnd(5, '☆');
-    return `<span style="color:#f4c542;font-weight:700">${out}</span>`;
-  };
-
-  function colorForCategory(cat) {
-    if (!cat) return 'green';
-    if (cat === 'bar') return 'red';
-    if (cat === 'pub') return 'blue';
-    if (cat === 'klub_nocny') return 'purple';
-    return 'green';
-  }
-
-  function coloredIconClass(cat) {
-    return `marker-${colorForCategory(cat)}`;
-  }
-
-  function formatOperatingHours(oh) {
-    if (!oh || typeof oh !== 'object') return '';
-    const mapKey = {
-      monday: 'poniedziałek', tuesday: 'wtorek', wednesday: 'środa',
-      thursday: 'czwartek', friday: 'piątek', saturday: 'sobota', sunday: 'niedziela'
-    };
-    const order = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-    const lines = [];
-    for (const k of order) {
-      const val = oh[k];
-      if (!val) continue;
-      lines.push(`${mapKey[k]} ${val}`);
-    }
-    return lines.join('\n');
-  }
-
-  function makeIcon(cat) {
-    return window.L.icon({
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41],
-      className: coloredIconClass(cat)
-    });
-  }
-
-  const goldIcon = window.L.icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-  });
-
-  function isNear(lat1, lng1, lat2, lng2) {
-    const threshold = 0.00005;
-    return Math.abs(lat1 - lat2) < threshold && Math.abs(lng1 - lng2) < threshold;
-  }
-
-  function groupMeetings(meetingsList) {
-    const groups = [];
-    meetingsList.forEach(m => {
-      const latVal = Number(m.lat);
-      const lngVal = Number(m.lng);
-      if (isNaN(latVal) || isNaN(lngVal)) return;
-
-      let existingGroup = groups.find(g => isNear(g.lat, g.lng, latVal, lngVal));
-      
-      if (existingGroup) {
-        existingGroup.items.push(m);
-      } else {
-        groups.push({
-          lat: latVal,
-          lng: lngVal,
-          items: [m]
-        });
-      }
-    });
-    return groups;
-  }
-
   useEffect(() => {
+    if (!window.L) {
+      console.warn('Leaflet nie jest jeszcze załadowany. Mapa może się nie wyświetlić.');
+      return;
+    }
+
     if (!document.getElementById('mapleaflet-category-styles')) {
       const style = document.createElement('style');
       style.id = 'mapleaflet-category-styles';
@@ -135,11 +108,38 @@ export default function MapLeaflet({
       document.head.appendChild(style);
     }
 
-    if (!window.L) {
-      console.error('Leaflet (L) not found.');
-      return;
+    function colorForCategory(cat) {
+      if (!cat) return 'green';
+      if (cat === 'bar') return 'red';
+      if (cat === 'pub') return 'blue';
+      if (cat === 'klub_nocny') return 'purple';
+      return 'green';
+    }
+  
+    function coloredIconClass(cat) {
+      return `marker-${colorForCategory(cat)}`;
     }
 
+    const makeIcon = (cat) => {
+      return window.L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+        className: coloredIconClass(cat)
+      });
+    };
+
+    const goldIcon = window.L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
     if (!mapRef.current) {
       mapRef.current = window.L.map(containerRef.current).setView(center, zoom);
       window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -150,16 +150,8 @@ export default function MapLeaflet({
 
     let cancelled = false;
 
-    const ratingsFetch = fetch('/ratings.json')
-      .then(res => res.ok ? res.json() : {})
-      .catch(() => ({}));
-
-    const scraperCacheFetch = fetch('/maps-bars.json')
-      .then(res => {
-        if (!res.ok) return ({ places: [], last_updated: null });
-        return res.json();
-      })
-      .catch(() => ({ places: [], last_updated: null }));
+    const ratingsFetch = fetch('/ratings.json').then(res => res.ok ? res.json() : {}).catch(() => ({}));
+    const scraperCacheFetch = fetch('/maps-bars.json').then(res => res.ok ? res.json() : { places: [] }).catch(() => ({ places: [] }));
 
     Promise.all([ratingsFetch, scraperCacheFetch]).then(([ratings, cache]) => {
       if (cancelled) return;

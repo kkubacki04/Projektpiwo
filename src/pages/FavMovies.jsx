@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { searchMovies, popularMovies, searchSeries, popularSeries } from '../lib/tmdb';
 import MovieCard from '../components/MovieCard';
 import MovieModal from '../components/MovieModal';
+import Notification from '../components/Notification'; 
+import ConfirmModal from '../components/ConfirmModal'; 
 import { supabase } from '../supabaseClient';
 import '../index.css';
 
@@ -17,6 +19,11 @@ export default function FavMovies({ user }) {
   const [mediaType, setMediaType] = useState('movie');
   
   const [favorites, setFavorites] = useState([]);
+
+  const [notification, setNotification] = useState({ message: '', type: '' });
+  const [confirmModal, setConfirmModal] = useState({ show: false, movie: null });
+
+  const showNotify = (msg, type = 'success') => setNotification({ message: msg, type });
 
   const normalizeResults = (dataResults = [], type = 'movie') => {
     return (dataResults || []).map(item => ({
@@ -57,7 +64,7 @@ export default function FavMovies({ user }) {
         const data = type === 'tv' ? await searchSeries(q, p) : await searchMovies(q, p);
         const normalized = normalizeResults(data.results, type);
         setResults(normalized);
-        setTotalPages(20 || 0);
+        setTotalPages(data.total_pages || 0); 
         setPage(p);
         setMode('search');
       }
@@ -72,7 +79,7 @@ export default function FavMovies({ user }) {
 
   useEffect(() => {
     fetchPage(1, '', mediaType);
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     clearTimeout(debounceRef.current);
@@ -89,11 +96,11 @@ export default function FavMovies({ user }) {
     }, 350);
 
     return () => clearTimeout(debounceRef.current);
-  }, [query, mediaType]);
+  }, [query, mediaType]); // eslint-disable-line
 
   useEffect(() => {
     fetchPage(page, query, mediaType);
-  }, [page]);
+  }, [page]); // eslint-disable-line
 
   const handleMediaTypeChange = (type) => {
     if (type === mediaType) return;
@@ -113,7 +120,7 @@ export default function FavMovies({ user }) {
 
   const handleAddToFavorites = async (movie) => {
     if (!user) {
-      alert('Musisz być zalogowany, aby dodawać filmy do ulubionych.');
+      showNotify('Musisz być zalogowany, aby dodawać filmy do ulubionych.', 'error');
       return;
     }
 
@@ -130,22 +137,29 @@ export default function FavMovies({ user }) {
 
       if (error) {
         if (error.code === '23505') { 
-          alert('Ten film jest już w ulubionych.');
+          showNotify('Ten film jest już w ulubionych.', 'error');
         } else {
           throw error;
         }
       } else {
         setFavorites(prev => [...prev, title]);
-        alert(`Dodano "${title}" do ulubionych!`);
+        showNotify(`Dodano "${title}" do ulubionych!`);
       }
     } catch (error) {
       console.error(error);
-      alert('Wystąpił błąd podczas dodawania do ulubionych.');
+      showNotify('Wystąpił błąd podczas dodawania do ulubionych.', 'error');
     }
   };
 
-  const handleRemoveFromFavorites = async (movie) => {
-    if (!user) return;
+  const handleRemoveFromFavorites = (movie) => {
+      setConfirmModal({ show: true, movie });
+  };
+
+  const executeRemove = async () => {
+    const movie = confirmModal.movie;
+    setConfirmModal({ show: false, movie: null });
+    
+    if (!user || !movie) return;
     const title = movie.title || movie.name;
 
     try {
@@ -158,10 +172,10 @@ export default function FavMovies({ user }) {
       if (error) throw error;
 
       setFavorites(prev => prev.filter(t => t !== title));
-      alert(`Usunięto "${title}" z ulubionych.`);
+      showNotify(`Usunięto "${title}" z ulubionych.`);
     } catch (error) {
       console.error(error);
-      alert('Nie udało się usunąć filmu.');
+      showNotify('Nie udało się usunąć filmu.', 'error');
     }
   };
 
@@ -171,6 +185,19 @@ export default function FavMovies({ user }) {
 
   return (
     <div className="container" style={{ paddingTop: 90 }}>
+      <Notification 
+        message={notification.message} 
+        type={notification.type} 
+        onClose={() => setNotification({ message: '', type: '' })} 
+      />
+      <ConfirmModal 
+        show={confirmModal.show} 
+        title="Usuwanie z ulubionych" 
+        message={`Czy na pewno chcesz usunąć "${confirmModal.movie?.title || confirmModal.movie?.name}"?`}
+        onCancel={() => setConfirmModal({ show: false, movie: null })} 
+        onConfirm={executeRemove} 
+      />
+
       <h2>Przeglądaj filmy</h2>
 
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', margin: '1rem 0' }}>
