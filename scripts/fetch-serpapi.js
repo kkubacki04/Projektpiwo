@@ -7,14 +7,11 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// frazy mapowane wyłącznie na 3 kategorie: bar | pub | klub_nocny
 const QUERIES = [
-  // ogólne
   { q: 'bar Kraków', category: 'bar' },
   { q: 'pub Kraków', category: 'pub' },
   { q: 'klub nocny Kraków', category: 'klub_nocny' },
 
-  // typy i cechy przypisane do "bar"
   { q: 'cocktail bar Kraków', category: 'bar' },
   { q: 'shot bar Kraków', category: 'bar' },
   { q: 'wine bar Kraków', category: 'bar' },
@@ -32,32 +29,29 @@ const QUERIES = [
   { q: 'after hours bar Kraków', category: 'bar' },
   { q: '24h bar Kraków', category: 'bar' },
 
-  // typy i cechy przypisane do "pub"
   { q: 'irish pub Kraków', category: 'pub' },
-  { q: 'sports bar Kraków', category: 'pub' }, // sportsy często jako pub
+  { q: 'sports bar Kraków', category: 'pub' },
   { q: 'bar studencki Kraków', category: 'pub' },
   { q: 'local pub Kraków', category: 'pub' },
 
-  // typy i cechy przypisane do "klub_nocny"
   { q: 'club Kraków', category: 'klub_nocny' },
   { q: 'late night club Kraków', category: 'klub_nocny' },
   { q: 'dance club Kraków', category: 'klub_nocny' },
   { q: 'electronic club Kraków', category: 'klub_nocny' }
 ];
 
-// grid punktów wokół centrum (możesz dopisać więcej)
 const GRID = [
-  '@50.0647,19.9450,15z', // centrum
-  '@50.0705,19.9400,15z', // północny zachód
-  '@50.0590,19.9400,15z', // południowy zachód
-  '@50.0647,19.9550,15z', // wschód
-  '@50.0647,19.9350,15z'  // zachód
+  '@50.0647,19.9450,15z', 
+  '@50.0705,19.9400,15z', 
+  '@50.0590,19.9400,15z', 
+  '@50.0647,19.9550,15z', 
+  '@50.0647,19.9350,15z'  
 ];
 
-// parametry deduplikacji i limity
-const COORD_EPS = 0.0006; // ~60m
-const DETAILS_LIMIT = 80; // max dodatkowych zapytań place/details
-const SLEEP_MS_BETWEEN = 300; // pauza między zapytaniami
+
+const COORD_EPS = 0.0006; 
+const DETAILS_LIMIT = 80; 
+const SLEEP_MS_BETWEEN = 300; 
 
 function normalize(s) {
   return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
@@ -85,7 +79,6 @@ function mergeUnique(existing, incoming) {
       dup.reviews = dup.reviews ?? (p.reviews ?? p.user_ratings_total);
       dup.operating_hours = dup.operating_hours ?? p.operating_hours;
       dup.address = dup.address ?? p.address;
-      // kategoria może pochodzić z pierwszego trafienia; zachowaj jeśli istnieje
       dup.category = dup.category ?? p.category;
       dup.gps_coordinates = dup.gps_coordinates ?? p.gps_coordinates ?? (p.lat != null && p.lng != null ? { latitude: p.lat, longitude: p.lng } : undefined);
       dup.place_id = dup.place_id ?? p.place_id;
@@ -141,7 +134,6 @@ async function fetchPlaceDetails(place_id) {
     }
   }
 
-  // opcjonalne pobieranie szczegółów dla miejsc bez hours/rating (ograniczone)
   let detailsCount = 0;
   for (let i = 0; i < merged.length && detailsCount < DETAILS_LIMIT; i++) {
     const p = merged[i];
@@ -156,12 +148,10 @@ async function fetchPlaceDetails(place_id) {
         detailsCount++;
         await new Promise(r => setTimeout(r, SLEEP_MS_BETWEEN + 50));
       } catch (e) {
-        /* ignore */
       }
     }
   }
 
-  // zapisz wynik
   try {
     fs.writeFileSync('public/maps-bars.json', JSON.stringify({
       places: merged,
