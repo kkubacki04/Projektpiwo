@@ -80,12 +80,11 @@ export default function RegisterModal() {
       }, 600);
     };
 
-    console.log('RegisterModal mounted, subscribing to auth changes');
     const { data: subscription } = supabase.auth.onAuthStateChange(handle);
     subscriptionRef.current = subscription;
     return () => {
       subscriptionRef.current?.unsubscribe?.();
-      console.log('RegisterModal unmounted, unsubscribed auth listener');
+      
     };
   }, []);
 
