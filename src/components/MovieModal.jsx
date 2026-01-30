@@ -55,6 +55,7 @@ export default function MovieModal({ movie, onClose, onAddToFavorites, onRemoveF
         </div>
       </div>
 
+
       <style>{`
         .mm-backdrop {
           position: fixed;
