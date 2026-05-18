@@ -36,9 +36,9 @@ This project uses a robust relational database hosted on **Supabase (PostgreSQL)
 
 3. Set up environment variables:
 Create a .env file in the root directory and add your Supabase keys:
-
-REACT_APP_SUPABASE_URL=your_supabase_url
-REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
+    ```bash
+    REACT_APP_SUPABASE_URL=your_supabase_url
+    REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 4. Start the development server:
 
