@@ -30,24 +30,24 @@ This project uses a robust relational database hosted on **Supabase (PostgreSQL)
    ```bash
    git clone [https://github.com/kkubacki04/projektpiwo.git](https://github.com/kkubacki04/projektpiwo.git)
    
-2. Install dependencies:
+2. **Install dependencies:**
 
     ```bash
     npm install
 
-3. Set up environment variables:
+3. **Set up environment variables:**
 Create a .env file in the root directory and add your Supabase keys:
     ```bash
     REACT_APP_SUPABASE_URL=your_supabase_url
     REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-4. Start the development server:
+4. **Start the development server:**
 
     ```bash
     npm start
     
 
-## Or see it live under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456
+**## Or see it live under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456**
 
 
 <img width="1903" height="938" alt="image" src="https://github.com/user-attachments/assets/8e8d3a5d-8830-42b3-8d10-9aafe9e6a749" />
