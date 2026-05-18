@@ -227,6 +227,7 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
 
   const displayName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() : 'Użytkownik';
   const avatarSrc = profile?.avatar_url || '/avatar.jpg';
+  const bio = profile?.description|| 'Brak opisu.';
 
   const renderParticipants = (participants) => {
     if (!participants || participants.length === 0) return null;
@@ -443,7 +444,7 @@ export default function Home({ user, goToProfile, goToMovies, goToMusic }) {
                     />
                     <div>
                       <div className="fw-semibold">{displayName}</div>
-                      <div className="text-muted small">Fan taniego piwa</div>
+                      <div className="text-muted small">{bio}</div>
                     </div>
                   </div>
                   <button className="btn btn-outline-primary btn-sm w-100" onClick={handleGoToProfile}>Edytuj profil</button>
