@@ -47,7 +47,7 @@ Create a .env file in the root directory and add your Supabase keys:
     npm start
     
 
-**## Or see it live under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456**
+## ** Or see it live under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456**
 
 
 <img width="1903" height="938" alt="image" src="https://github.com/user-attachments/assets/8e8d3a5d-8830-42b3-8d10-9aafe9e6a749" />
