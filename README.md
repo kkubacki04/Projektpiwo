@@ -1,6 +1,7 @@
 #  BeerBuddy Kraków (Projekt Piwo)
 
 A modern, interactive web application designed to help people in Kraków find company for a beer. Users can locate bars, pubs, and clubs on an interactive map, organize meetings, and join existing ones matching with people that share their interests. 
+<img width="1194" height="884" alt="image" src="https://github.com/user-attachments/assets/5ecf7b91-7ec7-4c32-950d-da24d0a53ade" />
 
 ##  Key Features
 * **Interactive Map:** Integration with Leaflet to display venues and user-generated meetings across Kraków.
