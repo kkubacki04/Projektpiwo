@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+#  BeerBuddy Kraków (Projekt Piwo)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive web application designed to help people in Kraków find company for a beer. Users can locate bars, pubs, and clubs on an interactive map, organize meetings, and join existing ones matching with people that share their interests. 
 
-## Available Scripts
+##  Key Features
+* **Interactive Map:** Integration with Leaflet to display venues and user-generated meetings across Kraków.
+* **Meeting Management:** Users can create new meetings at specific venues, join existing ones, and see live participant lists.
+* **User Profiles:** Authentication system with customizable user profiles (avatars, descriptions, relationship status).
+* **Media Tracking:** Users can save and manage their favorite movies and music directly on their profiles(TMBD API, Spotify API).
+* **Real-time Database:** Powered by Supabase to handle complex relational data and user sessions.
 
-In the project directory, you can run:
+## Tech Stack
+* **Frontend:** React.js, React Router, Bootstrap / CSS
+* **Map Integration:** Leaflet (`react-leaflet`)
+* **Backend & Auth:** Supabase (PostgreSQL, Supabase Auth)
+* **Deployment:** Vercel
 
-### `npm start`
+##  Database Architecture & Security
+This project uses a robust relational database hosted on **Supabase (PostgreSQL)**. Key backend features include:
+* **Custom SQL Triggers:** Automated processes, such as automatically adding the creator of a meeting to the `meeting_participants` table using PL/pgSQL functions.
+* **Row Level Security (RLS):** Strict security policies ensuring users can only edit or delete their own data (profiles, favorite media, meetings).
+* **Relational Schema:** Efficiently structured tables with foreign key constraints linking users, profiles, meetings, and participants.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **Note:** The complete database architecture, including schemas, functions, and RLS policies, is documented in the `schema.sql` file included in this repository. SerpAPI script to scrape google maps data file included in this this repository.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##  How to Run Locally
 
-### `npm test`
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/kkubacki04/projektpiwo.git](https://github.com/kkubacki04/projektpiwo.git)
+   
+2. Install dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Bash
+npm install
 
-### `npm run build`
+3. Set up environment variables:
+Create a .env file in the root directory and add your Supabase keys:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+REACT_APP_SUPABASE_URL=your_supabase_url
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Bash
+npm start
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Or see it under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456
