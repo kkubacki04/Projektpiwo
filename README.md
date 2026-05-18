@@ -31,8 +31,8 @@ This project uses a robust relational database hosted on **Supabase (PostgreSQL)
    
 2. Install dependencies:
 
-Bash
-npm install
+    ```bash
+    npm install
 
 3. Set up environment variables:
 Create a .env file in the root directory and add your Supabase keys:
@@ -42,7 +42,7 @@ REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 4. Start the development server:
 
-Bash
-npm start
+    ```bash
+    npm start
 
-Or see it under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456
+Or see it live under the link: https://projektpiwo.vercel.app/ Test Account: testcvkowalski1234@gmail.com Password: 123456
